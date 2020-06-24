@@ -50,7 +50,7 @@ class _NavDrawerState extends State<NavDrawer> {
             decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
-                    fit: BoxFit.fill, 
+                    fit: BoxFit.fill,
                     image: NetworkImage(_photoUrl))),
           ),
           Flexible(
@@ -125,7 +125,7 @@ class _NavDrawerState extends State<NavDrawer> {
                 Navigator.of(context).pop(),
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ActitvityReport('Actitvity Reporting')),
+                  MaterialPageRoute(builder: (context) => ActivityReport('Actitvity Reporting')),
                 )
               },
             ),

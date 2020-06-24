@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:lionsclub/Widgets/activityReport.dart';
+import 'package:lionsclub/Widgets/adminReport.dart';
+import 'package:lionsclub/Widgets/uploadBills.dart';
 import 'loginPage.dart';
 import 'Widgets/sideBar.dart';
+import 'package:lionsclub/Widgets/profilePage.dart';
 class MyHomePage extends StatefulWidget {
 
   final String title;
@@ -15,87 +19,123 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget createBody() {
     return Column(
       children: <Widget>[
-        Container(
-          height: 200,
-          child: Center(
-            child: Text("IMAGE Portion"),
+        Padding(
+          padding: const EdgeInsets.only(top: 20,bottom: 20),
+          child: Container(
+            height: 200,
+            child: Center(
+              child: Image.asset(logoUrl3),
+              //Text("IMAGE Portion"),
+            ),
           ),
         ),
 
         SizedBox(
-          height: 10,
+          height: 20,
         ),
 
         Container(
-          height: 75,
-          child:Row(
-            children: <Widget>[
-              Spacer(),
-              Container(
-                width: 110,
-                height: 75,
-                color: mainColor,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Center(
-                    child: Text(
-                      "Activity Report",
-                      maxLines: 2,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                        fontSize: 20
+            child:Row(
+              children: <Widget>[
+                Spacer(),
+                GestureDetector(
+                  onTap: (){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ActivityReport('Activity Report')),
+                    );
+                  },
+                  child: Container(
+                    width: 110,
+                    height: 90,
+                    decoration: BoxDecoration(
+                      color: mainColor,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Center(
+                        child: Text(
+                          "Activity Report",
+                          maxLines: 2,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                              fontSize: 20
+                          ),
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              Spacer(),
-              Container(
-                width: 110,
-                height: 75,
-                color: mainColor,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Center(
-                    child: Text(
-                      "Admin Reporting",
-                      maxLines: 2,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          fontSize: 20
+                Spacer(),
+                GestureDetector(
+                  onTap: (){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => AdminReport('Admin Reports')),
+                    );
+                  },
+                  child: Container(
+                    width: 120,
+                    height: 90,
+                    decoration: BoxDecoration(
+                      color: mainColor,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Center(
+                        child: Text(
+                          "Admin Reporting",
+                          maxLines: 2,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                              fontSize: 20
+                          ),
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              Spacer(),
-              Container(
-                width: 110,
-                height: 75,
-                color: mainColor,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Center(
-                    child: Text(
-                      "Upload Bills",
-                      maxLines: 2,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                Spacer(),
+                GestureDetector(
+                  onTap: (){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => UploadBills('Upload Bills')),
+                    );
+                  },
+                  child: Container(
+                    width: 110,
+                    height: 90,
+                    decoration: BoxDecoration(
+                      color: mainColor,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Center(
+                        child: Text(
+                          "Upload Bills",
+                          maxLines: 2,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              Spacer(),
-            ],
-          )
+                Spacer(),
+              ],
+            )
 
         ),
 
@@ -113,7 +153,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Text(
                       "Upcoming events",
                       style: TextStyle(
-                        fontSize: 25
+                          fontSize: 25
                       ),
                     ),
                   ),
@@ -122,7 +162,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   padding: const EdgeInsets.only(right: 10),
                   child: Container(
                     alignment: Alignment.bottomRight,
-                    child: Text("Load More"),
+                    child: Text(
+                      "Load More",
+                      style: TextStyle(
+                          color: Colors.blue[900]
+                      ),
+                    ),
                   ),
                 ),
               ],
@@ -130,39 +175,36 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
 
-
-
-
         Expanded(
           child: ListView.builder(
             itemCount: 10,
             itemBuilder: (BuildContext context, int index){
 
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ListTile(
-                    leading: Container(
-                        padding: const EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          borderRadius:
-                          BorderRadius.all(const Radius.circular(100.0)),
-                          color: Theme.of(context).primaryColor,
-                        ),
-                        child: Icon(
-                          Icons.attach_file,
-                          color: Colors.white,
-                          size: 30,
-                        )),
-                    title: Text('Event Name'),
-                    onTap: () => {
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ListTile(
+                  leading: Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        borderRadius:
+                        BorderRadius.all(const Radius.circular(100.0)),
+                        color: Theme.of(context).primaryColor,
+                      ),
+                      child: Icon(
+                        Icons.photo,
+                        color: Colors.white,
+                        size: 30,
+                      )),
+                  title: Text('Event Name'),
+                  onTap: () => {
 //                  Navigator.of(context).pop(),
 //                  Navigator.push(
 //                    context,
 //                    MaterialPageRoute(builder: (context) => ActitvityReport('Actitvity Reporting')),
 //                  )
-                    },
-                  ),
-                );
+                  },
+                ),
+              );
             },
           ),
         )
@@ -191,9 +233,26 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(
           widget.title,
           style: TextStyle(
-            fontSize: 20
+              fontSize: 20
           ),
         ),
+        actions: <Widget>[
+          GestureDetector(
+            onTap: (){
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProfilePage('Profile')),
+              );
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Icon(
+                Icons.person,
+                size: 30,
+              ),
+            ),
+          )
+        ],
 
       ),
       body: createBody(),

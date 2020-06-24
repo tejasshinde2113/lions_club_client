@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-class ActitvityReport extends StatefulWidget {
+class ActivityReport extends StatefulWidget {
   final String title;
   @override
-  ActitvityReport(this.title);
-  _ActitvityReportState createState() => _ActitvityReportState();
+  ActivityReport(this.title);
+  _ActivityReportState createState() => _ActivityReportState();
 }
 
-class _ActitvityReportState extends State<ActitvityReport> {
+class _ActivityReportState extends State<ActivityReport> {
   createBody(){
 
   }

@@ -11,7 +11,9 @@ class LoginPage extends StatefulWidget {
 
   _LoginPageState createState() => _LoginPageState();
 }
-String logoUrl = "images/lionLogo2.png";
+String logoUrl1 = "images/lionLogo2.png";
+String logoUrl2 = "images/lionLogo.png";
+String logoUrl3 = "images/lionLogo1.png";
 Color mainColor = Colors.red;
 Color blackColor = Colors.black;
 Color whiteColor = Colors.white;
@@ -67,7 +69,7 @@ class _LoginPageState extends State<LoginPage>{
                 child: Container(
                   width: 150,
                   height: 150,
-                  child: Image.asset(logoUrl),
+                  child: Image.asset(logoUrl1),
                 ),
               ),
 
@@ -208,7 +210,7 @@ class _LoginPageState extends State<LoginPage>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: createBody()
+        body: createBody()
     );
   }
 }
