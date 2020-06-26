@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'homePage.dart';
 import 'package:flutter/services.dart' ;
+import 'Animation/animation.dart';
 
 
 class LoginPage extends StatefulWidget {
@@ -48,13 +49,13 @@ class _LoginPageState extends State<LoginPage>{
         children: <Widget> [
           Stack(
             children: <Widget>[
-              Container(
-                height: 330,
-                decoration: BoxDecoration(
-                  color: blackColor,
-                  borderRadius: BorderRadius.only(bottomLeft: Radius.circular(00), bottomRight: Radius.elliptical(400, 250)),
-                ),
-              ),
+            FadeAnimation(1.2, "LX", Container(
+                    height: 330,
+                    decoration: BoxDecoration(
+                      color: blackColor,
+                      borderRadius: BorderRadius.only(bottomLeft: Radius.circular(00), bottomRight: Radius.elliptical(400, 250)),
+                    ),
+                  )),
 
               Container(
                 height: 300,
@@ -66,18 +67,18 @@ class _LoginPageState extends State<LoginPage>{
               Positioned(
                 left: 10,
                 bottom: 60,
-                child: Container(
+                child: FadeAnimation(2,"LX",Container(
                   width: 150,
                   height: 150,
                   child: Image.asset(logoUrl1),
-                ),
+                ))
               ),
 
               Positioned(
                 left: 20,
                 top: 70,
                 right: 20,
-                child: Container(
+                child: FadeAnimation (1, "LX",Container(
                   child: Text(
                     "Lion's International",
                     maxLines: 1,
@@ -88,13 +89,14 @@ class _LoginPageState extends State<LoginPage>{
 
                     ),
                   ),
-
+                ),
                 ),
               ),
             ],
           ),
           Spacer(flex: 2,),
-          Padding(
+
+          FadeAnimation( 1.3,"LY", Padding(
             padding: const EdgeInsets.only(left: 50,right: 50,top: 10),
             child: GestureDetector(
               onTap: (){
@@ -129,13 +131,17 @@ class _LoginPageState extends State<LoginPage>{
                 ),
                 height: 50,
               ),
+              ),
             ),
           ),
+
           SizedBox(
             height: 10,
           ),
 
-          Padding(
+//          9720520514
+
+          FadeAnimation( 1.5,"RY",  Padding(
             padding: const EdgeInsets.only(left: 50,right: 50,top: 10),
             child: GestureDetector(
               onTap: (){
@@ -172,10 +178,11 @@ class _LoginPageState extends State<LoginPage>{
               ),
             ),
           ),
+          ),
           SizedBox(
             height: 50,
           ),
-          Padding(
+          FadeAnimation( 1.7,'RX', Padding(
             padding: const EdgeInsets.only(left: 40,right: 40,top: 10),
             child: GestureDetector(
               onTap: (){
@@ -200,6 +207,7 @@ class _LoginPageState extends State<LoginPage>{
                 height: 60,
               ),
             ),
+          ),
           ),
           Spacer(flex: 1,),
 

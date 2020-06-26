@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:lionsclub/Widgets/activityReport.dart';
-import 'package:lionsclub/Widgets/adminReport.dart';
 import 'package:lionsclub/Widgets/uploadBills.dart';
 import 'loginPage.dart';
 import 'Widgets/sideBar.dart';
+import 'Widgets/AdminWidget/adminReport.dart';
+import 'Widgets/ActivityReporting/activityReport.dart';
 import 'package:lionsclub/Widgets/profilePage.dart';
 class MyHomePage extends StatefulWidget {
 

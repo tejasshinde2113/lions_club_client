@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'activityReport.dart';
-import 'adminReport.dart';
+import 'AdminWidget/adminReport.dart';
+import 'ActivityReporting/activityReport.dart';
 import 'memberDirectory.dart';
 import 'news.dart';
 import 'gallery.dart';
