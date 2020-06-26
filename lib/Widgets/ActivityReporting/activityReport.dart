@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
+import 'dart:async';
 
 class ActivityReport extends StatefulWidget {
   final String title;
@@ -8,32 +11,39 @@ class ActivityReport extends StatefulWidget {
   _ActivityReportState createState() => _ActivityReportState();
 }
 
-class _ActivityReportState extends State<ActivityReport> with SingleTickerProviderStateMixin {
+class _ActivityReportState extends State<ActivityReport>
+    with SingleTickerProviderStateMixin {
+  File _imageFile;
 
-  DateTime dateTime;
+  Future<Null> _pickImageFromGallery() async {
+    final File imageFile =
+        await ImagePicker.pickImage(source: ImageSource.gallery);
+    setState(() => this._imageFile = imageFile);
+  }
+
   final List<Tab> myTabs = <Tab>[
-                Tab(
-                  text: "Basic",
-                  icon: Icon(
-                    Icons.account_circle,
-                    size: 35,
-                  ),
-                ),
-                Tab(
-                  text: "Detailed",
-                  icon: Icon(
-                    Icons.info,
-                    size: 35,
-                  ),
-                ),
-                Tab(
-                  text: "Descrption",
-                  icon: Icon(
-                    Icons.photo,
-                    size: 35,
-                  ),
-                ),
-              ];
+    Tab(
+      text: "Basic",
+      icon: Icon(
+        Icons.account_circle,
+        size: 35,
+      ),
+    ),
+    Tab(
+      text: "Detailed",
+      icon: Icon(
+        Icons.info,
+        size: 35,
+      ),
+    ),
+    Tab(
+      text: "Descrption",
+      icon: Icon(
+        Icons.photo,
+        size: 35,
+      ),
+    ),
+  ];
   String title = 'DropDownButton';
   static const menuItems = <String>[
     '  Diabetes ',
@@ -55,17 +65,17 @@ class _ActivityReportState extends State<ActivityReport> with SingleTickerProvid
           value: value,
           child: Text(value),
         ),
-  ).toList();
-
+      )
+      .toList();
 
   String _btn2SelectedVal;
   TabController _tabController;
 
-  Widget basicInformation(){
+  Widget basicInformation() {
     return ListView(
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.only(left: 15,top: 20),
+          padding: const EdgeInsets.only(left: 15, top: 20),
           child: Container(
             alignment: Alignment.centerLeft,
             child: Text(
@@ -76,9 +86,11 @@ class _ActivityReportState extends State<ActivityReport> with SingleTickerProvid
             ),
           ),
         ),
-        SizedBox(height: 10,),
+        SizedBox(
+          height: 10,
+        ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(15.0,8.0,15.0,8.0),
+          padding: const EdgeInsets.fromLTRB(15.0, 8.0, 15.0, 8.0),
           child: TextField(
             //controller: this._controller,
             maxLines: 1,
@@ -91,16 +103,17 @@ class _ActivityReportState extends State<ActivityReport> with SingleTickerProvid
             onChanged: (text) => setState(() {}),
           ),
         ),
-        SizedBox(height: 10,),
+        SizedBox(
+          height: 10,
+        ),
         Padding(
-          padding: const EdgeInsets.only(left: 15,right: 15),
+          padding: const EdgeInsets.only(left: 15, right: 15),
           child: Container(
             height: 58.0,
             decoration: BoxDecoration(
                 border: Border.all(
-                  color: Colors.grey,
-                )
-            ),
+              color: Colors.grey,
+            )),
             child: DropdownButton(
               isExpanded: true,
               value: _btn2SelectedVal,
@@ -118,24 +131,29 @@ class _ActivityReportState extends State<ActivityReport> with SingleTickerProvid
             ),
           ),
         ),
-        SizedBox(height: 10,),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(15.0,8.0,15.0,8.0),
-          child: TextField(
-
-            textCapitalization: TextCapitalization.sentences,
-            decoration: InputDecoration(
-
-              labelText: 'Activity Date',
-              border: OutlineInputBorder(),
-            ),
-            //onTap: ,
-            onChanged: (text) => setState(() {}),
-          ),
+        SizedBox(
+          height: 10,
         ),
-        SizedBox(height: 10,),
+        //Padding(
+        //padding: const EdgeInsets.fromLTRB(15.0,8.0,15.0,8.0),
+        //child: TextField(
+
+        //textCapitalization: TextCapitalization.sentences,
+        //decoration: InputDecoration(
+
+        //labelText: 'Activity Date',
+        //border: OutlineInputBorder(),
+        //),
+        //onTap: ,
+        // onChanged: (text) => setState(() {}),
+        //),
+        //),
+
+        SizedBox(
+          height: 10,
+        ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(15.0,8.0,15.0,8.0),
+          padding: const EdgeInsets.fromLTRB(15.0, 8.0, 15.0, 8.0),
           child: TextField(
             //controller: this._controller,
             maxLines: 1,
@@ -148,9 +166,11 @@ class _ActivityReportState extends State<ActivityReport> with SingleTickerProvid
             onChanged: (text) => setState(() {}),
           ),
         ),
-        SizedBox(height: 10,),
+        SizedBox(
+          height: 10,
+        ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(15.0,8.0,15.0,8.0),
+          padding: const EdgeInsets.fromLTRB(15.0, 8.0, 15.0, 8.0),
           child: TextField(
             //controller: this._controller,
             maxLines: 1,
@@ -163,155 +183,166 @@ class _ActivityReportState extends State<ActivityReport> with SingleTickerProvid
             onChanged: (text) => setState(() {}),
           ),
         ),
-        SizedBox(height: 100,),
+        SizedBox(
+          height: 100,
+        ),
         Center(
-              child: FlatButton(
-                textColor: Colors.white,
-                color: Colors.red,
-                child: Text(
-                  'NEXT',
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                onPressed: () {
-                  setState(() {
-                    _tabController.animateTo((_tabController.index + 1) % 3);
+          child: FlatButton(
+            textColor: Colors.white,
+            color: Colors.red,
+            child: Text(
+              'NEXT',
+              style: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            onPressed: () {
+              setState(() {
+                _tabController.animateTo((_tabController.index + 1) % 3);
 //                  Navigator.push(
 //                      context,
 //                      MaterialPageRoute(
 //                          builder: (context) =>
 //                              Description('Activity reporting')));
-                  });
-                },
-              ),
-            ),
+              });
+            },
+          ),
+        ),
       ],
-
     );
   }
 
-  Widget detailedInformation(){
-    return ListView(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(left: 10,top: 10),
-            child: Container(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Detailed Information',
-                style: TextStyle(
-                  fontSize: 25.0,
-                ),
-              ),
+  Widget detailedInformation() {
+    return ListView(children: <Widget>[
+      Padding(
+        padding: const EdgeInsets.only(left: 10, top: 10),
+        child: Container(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            'Detailed Information',
+            style: TextStyle(
+              fontSize: 25.0,
             ),
           ),
-          SizedBox(height: 10,),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              // controller: this._controller,
-              maxLines: 1,
-              textCapitalization: TextCapitalization.sentences,
-              decoration: InputDecoration(
-                // counterText: '${this._controller.text.split(' ').length} words',
-                labelText: 'No. of Lions Hours',
-                border: OutlineInputBorder(),
-              ),
-              onChanged: (text) => setState(() {}),
+        ),
+      ),
+      SizedBox(
+        height: 10,
+      ),
+      Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: TextField(
+          // controller: this._controller,
+          maxLines: 1,
+          textCapitalization: TextCapitalization.sentences,
+          decoration: InputDecoration(
+            // counterText: '${this._controller.text.split(' ').length} words',
+            labelText: 'No. of Lions Hours',
+            border: OutlineInputBorder(),
+          ),
+          onChanged: (text) => setState(() {}),
+        ),
+      ),
+      SizedBox(
+        height: 10,
+      ),
+      Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: TextField(
+          //controller: this._controller,
+          maxLines: 1,
+          textCapitalization: TextCapitalization.sentences,
+          decoration: InputDecoration(
+            //counterText: '${this._controller.text.split(' ').length} words',
+            labelText: 'ANo. of people served',
+            border: OutlineInputBorder(),
+          ),
+          onChanged: (text) => setState(() {}),
+        ),
+      ),
+      SizedBox(
+        height: 10,
+      ),
+      Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: TextField(
+          //controller: this._controller,
+          maxLines: 1,
+          textCapitalization: TextCapitalization.sentences,
+          decoration: InputDecoration(
+            //counterText: '${this._controller.text.split(' ').length} words',
+            labelText: 'Total Amount Spent',
+            border: OutlineInputBorder(),
+          ),
+          onChanged: (text) => setState(() {}),
+        ),
+      ),
+      SizedBox(
+        height: 10,
+      ),
+      Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: TextField(
+          //controller: this._controller,
+          maxLines: 1,
+          textCapitalization: TextCapitalization.sentences,
+          decoration: InputDecoration(
+            //  counterText: '${this._controller.text.split(' ').length} words',
+            labelText: 'Cabinet Officers Present (if any)',
+            border: OutlineInputBorder(),
+          ),
+          onChanged: (text) => setState(() {}),
+        ),
+      ),
+      SizedBox(
+        height: 10,
+      ),
+      Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: TextField(
+          //controller: this._controller,
+          maxLines: 1,
+          textCapitalization: TextCapitalization.sentences,
+          decoration: InputDecoration(
+            //counterText: '${this._controller.text.split(' ').length} words',
+            labelText: 'Media Coverage (if any)',
+            border: OutlineInputBorder(),
+          ),
+          onChanged: (text) => setState(() {}),
+        ),
+      ),
+      SizedBox(
+        height: 100,
+      ),
+      Center(
+        child: FlatButton(
+          textColor: Colors.white,
+          color: Colors.red,
+          child: Text(
+            'NEXT',
+            style: TextStyle(
+              fontSize: 20.0,
+              fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 10,),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              //controller: this._controller,
-              maxLines: 1,
-              textCapitalization: TextCapitalization.sentences,
-              decoration: InputDecoration(
-                //counterText: '${this._controller.text.split(' ').length} words',
-                labelText: 'ANo. of people served',
-                border: OutlineInputBorder(),
-              ),
-              onChanged: (text) => setState(() {}),
-            ),
-          ),
-          SizedBox(height: 10,),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              //controller: this._controller,
-              maxLines: 1,
-              textCapitalization: TextCapitalization.sentences,
-              decoration: InputDecoration(
-                //counterText: '${this._controller.text.split(' ').length} words',
-                labelText: 'Total Amount Spent',
-                border: OutlineInputBorder(),
-              ),
-              onChanged: (text) => setState(() {}),
-            ),
-          ),
-          SizedBox(height: 10,),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              //controller: this._controller,
-              maxLines: 1,
-              textCapitalization: TextCapitalization.sentences,
-              decoration: InputDecoration(
-                //  counterText: '${this._controller.text.split(' ').length} words',
-                labelText: 'Cabinet Officers Present (if any)',
-                border: OutlineInputBorder(),
-              ),
-              onChanged: (text) => setState(() {}),
-            ),
-          ),
-          SizedBox(height: 10,),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              //controller: this._controller,
-              maxLines: 1,
-              textCapitalization: TextCapitalization.sentences,
-              decoration: InputDecoration(
-                //counterText: '${this._controller.text.split(' ').length} words',
-                labelText: 'Media Coverage (if any)',
-                border: OutlineInputBorder(),
-              ),
-              onChanged: (text) => setState(() {}),
-            ),
-          ),
-          SizedBox(height: 100,),
-          Center(
-            child: FlatButton(
-              textColor: Colors.white,
-              color: Colors.red,
-              child: Text(
-                'NEXT',
-                style: TextStyle(
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              onPressed: () {
-                setState(() {
-                  _tabController.animateTo((_tabController.index + 1) % 3);
-                });
-              },
-            ),
-          ),
-        ]
-    );
+          onPressed: () {
+            setState(() {
+              _tabController.animateTo((_tabController.index + 1) % 3);
+            });
+          },
+        ),
+      ),
+    ]);
   }
 
-  Widget description(){
+  Widget description() {
     return ListView(
 //        mainAxisAlignment: MainAxisAlignment.spaceBetween,
 //        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.only(left: 10,top: 10),
+            padding: const EdgeInsets.only(left: 10, top: 10),
             child: Container(
               alignment: Alignment.centerLeft,
               child: Text(
@@ -349,24 +380,40 @@ class _ActivityReportState extends State<ActivityReport> with SingleTickerProvid
           SizedBox(
             height: 20,
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 10),
-            child: Container(
-              alignment: Alignment.centerLeft,
-              child: FlatButton(
-                color: Colors.red,
-                textColor: Colors.white,
-                child: Text(
-                  'CHOOSE IMAGES',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15.0,
+          Center(
+            child: Row(
+              children: <Widget>[
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ButtonBar(
+                      children: <Widget>[
+                        RaisedButton(
+                          color: Colors.red,
+                          textColor: Colors.white,
+                          child: Text('CHOOSE IMAGE'),
+                          //icon: Icon(Icons.photo),
+                          onPressed: () async => await _pickImageFromGallery(),
+                          // tooltip: 'Pick from gallery',
+                        ),
+                        this._imageFile == null
+                            ? Text('')
+                            // Placeholder()
+
+                            : Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 8.0, right: 90.0),
+                                child: Image.file(
+                                  this._imageFile,
+                                  height: 80,
+                                  width: 80,
+                                ),
+                              ),
+                      ],
+                    ),
                   ),
                 ),
-                onPressed: () {
-                  setState(() {});
-                },
-              ),
+              ],
             ),
           ),
           SizedBox(
@@ -380,13 +427,15 @@ class _ActivityReportState extends State<ActivityReport> with SingleTickerProvid
               textCapitalization: TextCapitalization.sentences,
               decoration: InputDecoration(
                 //counterText: '${this._controller.text.split(' ').length} words',
-                labelText: 'ANo. of people served',
+                labelText: 'Upload Drive Link (Add Photos/Videos)',
                 border: OutlineInputBorder(),
               ),
               onChanged: (text) => setState(() {}),
             ),
           ),
-          SizedBox(height: 100,),
+          SizedBox(
+            height: 100,
+          ),
           Center(
             child: Padding(
               padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 8.0),
@@ -402,28 +451,24 @@ class _ActivityReportState extends State<ActivityReport> with SingleTickerProvid
                 ),
                 onPressed: () {
                   setState(() {
-
                     _tabController.animateTo((_tabController.index + 1) % 3);
                   });
                 },
               ),
             ),
           ),
-
-        ]);}
+        ]);
+  }
 
   Widget createBody() {
-
     return TabBarView(
-      //     controller: controller,
+        //     controller: controller,
         controller: _tabController,
         children: <Widget>[
-
           basicInformation(),
           detailedInformation(),
           description(),
-        ]
-    );
+        ]);
   }
 
   @override
@@ -442,8 +487,13 @@ class _ActivityReportState extends State<ActivityReport> with SingleTickerProvid
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        //backgroundColor: Colors.yellow,
         title: Text(widget.title),
         bottom: TabBar(
+          unselectedLabelColor: Colors.red[150],
+          indicator: BoxDecoration(
+            borderRadius: BorderRadius.circular(50),
+          ),
           controller: _tabController,
           tabs: myTabs,
         ),
@@ -451,6 +501,4 @@ class _ActivityReportState extends State<ActivityReport> with SingleTickerProvid
       body: createBody(),
     );
   }
-
 }
-
