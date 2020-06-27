@@ -48,16 +48,18 @@ class _UploadBillsState extends State<UploadBills> {
       SizedBox(
         height: 10,
       ),
-      Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: TextField(
-          maxLines: 1,
-          textCapitalization: TextCapitalization.sentences,
-          decoration: InputDecoration(
-            labelText: 'Select Date',
-            border: OutlineInputBorder(),
+      Expanded(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: TextField(
+            maxLines: 1,
+            textCapitalization: TextCapitalization.sentences,
+            decoration: InputDecoration(
+              labelText: 'Select Date',
+              border: OutlineInputBorder(),
+            ),
+            onChanged: (text) => setState(() {}),
           ),
-          onChanged: (text) => setState(() {}),
         ),
       ),
       SizedBox(
