@@ -184,5 +184,5 @@ class _UploadBillsState extends State<UploadBills> {
                 'Not a text file. Showing base64.\n\n' + filePicker.toBase64();
           }
         }));
-  }
+}
 }

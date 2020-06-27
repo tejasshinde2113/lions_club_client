@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lionsclub/Widgets/upcomingEvent.dart';
 import 'package:lionsclub/Widgets/uploadBills.dart';
 import 'loginPage.dart';
 import 'Widgets/sideBar.dart';
@@ -6,6 +7,9 @@ import 'Widgets/AdminWidget/adminReport.dart';
 import 'Widgets/ActivityReporting/activityReport.dart';
 import 'package:lionsclub/Widgets/profilePage.dart';
 import 'Widgets/uploadBills.dart';
+import 'package:share/share.dart';
+
+
 class MyHomePage extends StatefulWidget {
 
   final String title;
@@ -160,14 +164,23 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(right: 10),
+                  padding: const EdgeInsets.only(right: 10,top: 35),
                   child: Container(
                     alignment: Alignment.bottomRight,
-                    child: Text(
-                      "Load More",
-                      style: TextStyle(
-                          color: Colors.blue[900]
+                    child: FlatButton(
+                      child: Text(
+                        "Load More",
+                        style: TextStyle(
+                            color: Colors.blue[900]
+                        ),
                       ),
+                      onPressed: (){
+                        Navigator.of(context).pop();
+                        Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => UpcomingEvent('Upcoming Events')),
+                        );
+                      },
                     ),
                   ),
                 ),
@@ -176,37 +189,432 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
 
-        Expanded(
-          child: ListView.builder(
-            itemCount: 10,
-            itemBuilder: (BuildContext context, int index){
 
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ListTile(
-                  leading: Container(
-                      padding: const EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        borderRadius:
-                        BorderRadius.all(const Radius.circular(100.0)),
-                        color: Theme.of(context).primaryColor,
+
+        Expanded(
+          child: GridView.count(
+            crossAxisCount: 2,
+            children: <Widget>[
+              Container(
+                child: FlatButton(
+                    child: Card(
+                      margin: EdgeInsets.all(
+                        1.0,
                       ),
-                      child: Icon(
-                        Icons.photo,
-                        color: Colors.white,
-                        size: 30,
-                      )),
-                  title: Text('Event Name'),
-                  onTap: () => {
-//                  Navigator.of(context).pop(),
-//                  Navigator.push(
-//                    context,
-//                    MaterialPageRoute(builder: (context) => ActitvityReport('Actitvity Reporting')),
-//                  )
-                  },
-                ),
-              );
-            },
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      elevation: 10.0,
+                      child: Column(
+                        children: <Widget>[
+                          Builder(builder: (BuildContext context) {
+                            return FlatButton(
+                              onPressed: () {
+                                Share.share("You are invited on 2020-05-13 for the following event");
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 120.0),
+                                child: Icon(
+                                  Icons.more_vert,
+                                  color: Colors.red,
+                                ),
+                              ),
+                            );
+                          }),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 1.0),
+                            child: Image.network(
+                              'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS-I9GgqHQ65s_jMNtosTsSajGB-87Y0Oyb5g&usqp=CAU',
+                              height: 120,
+                              width: 130,
+                            ),
+                          ),
+                          Text(
+                            'Taylor',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text('Description')
+                        ],
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => EventDescription('Lions International')));
+                    }),
+              ),
+              Container(
+                child: FlatButton(
+                    child: Card(
+                      margin: EdgeInsets.all(
+                        1.0,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      elevation: 10.0,
+                      child: Column(
+                        children: <Widget>[
+                          Builder(builder: (BuildContext context) {
+                            return FlatButton(
+                              onPressed: () {
+
+                                Share.share("You are invited on 2020-05-13 for the following event");
+
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 120.0),
+                                child: Icon(
+                                  Icons.more_vert,
+                                  color: Colors.red,
+                                ),
+                              ),
+                            );
+                          }),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 1.0),
+                            child: Image.network(
+                              'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS-I9GgqHQ65s_jMNtosTsSajGB-87Y0Oyb5g&usqp=CAU',
+                              height: 120,
+                              width: 130,
+                            ),
+                          ),
+                          Text(
+                            'Taylor',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text('Description')
+                        ],
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => EventDescription('Lions International')));
+                    }),
+              ),
+              Container(
+                child: FlatButton(
+                    child: Card(
+                      margin: EdgeInsets.all(
+                        1.0,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      elevation: 10.0,
+                      child: Column(
+                        children: <Widget>[
+                          Builder(builder: (BuildContext context) {
+                            return FlatButton(
+                              onPressed: () {
+                                Share.share("You are invited on 2020-05-13 for the following event");
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 120.0),
+                                child: Icon(
+                                  Icons.more_vert,
+                                  color: Colors.red,
+                                ),
+                              ),
+                            );
+                          }),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 1.0),
+                            child: Image.network(
+                              'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS-I9GgqHQ65s_jMNtosTsSajGB-87Y0Oyb5g&usqp=CAU',
+                              height: 120,
+                              width: 130,
+                            ),
+                          ),
+                          Text(
+                            'Taylor',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text('Description')
+                        ],
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => EventDescription('Lions International')));
+                    }),
+              ),
+              Container(
+                child: FlatButton(
+                    child: Card(
+                      margin: EdgeInsets.all(
+                        1.0,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      elevation: 10.0,
+                      child: Column(
+                        children: <Widget>[
+                          Builder(builder: (BuildContext context) {
+                            return FlatButton(
+                              onPressed: () {
+                                Share.share("You are invited on 2020-05-13 for the following event");
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 120.0),
+                                child: Icon(
+                                  Icons.more_vert,
+                                  color: Colors.red,
+                                ),
+                              ),
+                            );
+                          }),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 1.0),
+                            child: Image.network(
+                              'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS-I9GgqHQ65s_jMNtosTsSajGB-87Y0Oyb5g&usqp=CAU',
+                              height: 120,
+                              width: 130,
+                            ),
+                          ),
+                          Text(
+                            'Taylor',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text('Description')
+                        ],
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  EventDescription('Lions International')));
+                    }),
+              ),
+              Container(
+                child: FlatButton(
+                    child: Card(
+                      margin: EdgeInsets.all(
+                        1.0,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      elevation: 10.0,
+                      child: Column(
+                        children: <Widget>[
+                          Builder(builder: (BuildContext context) {
+                            return FlatButton(
+                              onPressed: () {
+                                Share.share("You are invited on 2020-05-13 for the following event");
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 120.0),
+                                child: Icon(
+                                  Icons.more_vert,
+                                  color: Colors.red,
+                                ),
+                              ),
+                            );
+                          }),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 1.0),
+                            child: Image.network(
+                              'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS-I9GgqHQ65s_jMNtosTsSajGB-87Y0Oyb5g&usqp=CAU',
+                              height: 120,
+                              width: 130,
+                            ),
+                          ),
+                          Text(
+                            'Taylor',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text('Description')
+                        ],
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => EventDescription('Lions International')));
+                    }),
+              ),
+              Container(
+                child: FlatButton(
+                    child: Card(
+                      margin: EdgeInsets.all(
+                        1.0,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      elevation: 10.0,
+                      child: Column(
+                        children: <Widget>[
+                          Builder(builder: (BuildContext context) {
+                            return FlatButton(
+                              onPressed: () {
+                                Share.share("You are invited on 2020-05-13 for the following event");
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 120.0),
+                                child: Icon(
+                                  Icons.more_vert,
+                                  color: Colors.red,
+                                ),
+                              ),
+                            );
+                          }),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 1.0),
+                            child: Image.network(
+                              'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS-I9GgqHQ65s_jMNtosTsSajGB-87Y0Oyb5g&usqp=CAU',
+                              height: 120,
+                              width: 130,
+                            ),
+                          ),
+                          Text(
+                            'Taylor',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text('Description')
+                        ],
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => EventDescription('Lions International')));
+                    }),
+              ),
+              Container(
+                child: FlatButton(
+                    child: Card(
+                      margin: EdgeInsets.all(
+                        1.0,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      elevation: 10.0,
+                      child: Column(
+                        children: <Widget>[
+                          Builder(builder: (BuildContext context) {
+                            return FlatButton(
+                              onPressed: () {
+                                Share.share("You are invited on 2020-05-13 for the following event");
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 120.0),
+                                child: Icon(
+                                  Icons.more_vert,
+                                  color: Colors.red,
+                                ),
+                              ),
+                            );
+                          }),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 1.0),
+                            child: Image.network(
+                              'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS-I9GgqHQ65s_jMNtosTsSajGB-87Y0Oyb5g&usqp=CAU',
+                              height: 120,
+                              width: 130,
+                            ),
+                          ),
+                          Text(
+                            'Taylor',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text('Description')
+                        ],
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => EventDescription('Lions International')));
+                    }),
+              ),
+              Container(
+                child: FlatButton(
+                    child: Card(
+                      margin: EdgeInsets.all(
+                        1.0,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      elevation: 10.0,
+                      child: Column(
+                        children: <Widget>[
+                          Builder(builder: (BuildContext context) {
+                            return FlatButton(
+                              onPressed: () {
+                                Share.share("You are invited on 2020-05-13 for the following event");
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 120.0),
+                                child: Icon(
+                                  Icons.more_vert,
+                                  color: Colors.red,
+                                ),
+                              ),
+                            );
+                          }),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 1.0),
+                            child: Image.network(
+                              'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS-I9GgqHQ65s_jMNtosTsSajGB-87Y0Oyb5g&usqp=CAU',
+                              height: 120,
+                              width: 130,
+                            ),
+                          ),
+                          Text(
+                            'Taylor',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text('Description')
+                        ],
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => EventDescription('Liond International')));
+                    }),
+              ),
+            ],
           ),
         )
 

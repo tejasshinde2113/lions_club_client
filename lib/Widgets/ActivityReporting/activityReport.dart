@@ -313,7 +313,7 @@ class _ActivityReportState extends State<ActivityReport>
         ),
       ),
       SizedBox(
-        height: 100,
+        height: 15,
       ),
       Center(
         child: FlatButton(
@@ -434,7 +434,7 @@ class _ActivityReportState extends State<ActivityReport>
             ),
           ),
           SizedBox(
-            height: 100,
+            height: 85,
           ),
           Center(
             child: Padding(
@@ -462,7 +462,7 @@ class _ActivityReportState extends State<ActivityReport>
 
   Widget createBody() {
     return TabBarView(
-        //     controller: controller,
+
         controller: _tabController,
         children: <Widget>[
           basicInformation(),
