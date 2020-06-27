@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lionsclub/Widgets/Members/members_expand.dart';
 class MemberDirectory extends StatefulWidget {
   final String title;
   @override
@@ -7,9 +8,7 @@ class MemberDirectory extends StatefulWidget {
 }
 
 class _MemberDirectoryState extends State<MemberDirectory> {
-  createBody(){
-
-  }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +17,7 @@ class _MemberDirectoryState extends State<MemberDirectory> {
             widget.title
         ),
       ),
-      body: createBody(),
+      body: MembersExpansion(),
     );
   }
 }
