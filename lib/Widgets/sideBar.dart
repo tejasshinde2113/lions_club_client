@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lionsclub/Widgets/News/news.dart';
 import 'AdminWidget/adminReport.dart';
 import 'ActivityReporting/activityReport.dart';
-import 'memberDirectory.dart';
+import 'Members/memberDirectory.dart';
 import 'gallery.dart';
 import 'upcomingEvent.dart';
 class NavDrawer extends StatefulWidget {

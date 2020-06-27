@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lionsclub/Widgets/News/newsArguments.dart';
+import 'package:wc_flutter_share/wc_flutter_share.dart';
 
 class NewsDetail extends StatefulWidget {
   @override
@@ -72,16 +73,16 @@ class _NewsDetailState extends State<NewsDetail> {
 
    void _shareData() async {
 
-    // final NewsArguments todo = ModalRoute.of(context).settings.arguments;
+    final NewsArguments todo = ModalRoute.of(context).settings.arguments;
     
-    // try {
-    //   await WcFlutterShare.share(
-    //       sharePopupTitle: 'Share',
-    //       subject: todo.titles,
-    //       text: todo.newsArticle,
-    //       mimeType: 'text/plain');
-    // } catch (e) {
-    //   print(e);
-    // }
+    try {
+      await WcFlutterShare.share(
+          sharePopupTitle: 'Share',
+          subject: todo.newsTitles+'\n',
+          text: todo.newsArticle,
+          mimeType: 'text/plain');
+    } catch (e) {
+      print(e);
+    }
   }
 }
