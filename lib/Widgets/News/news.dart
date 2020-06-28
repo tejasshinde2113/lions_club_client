@@ -23,6 +23,7 @@ class _NewsPageState extends State<NewsPage> {
   }
 
 }
+
 class Listview extends StatefulWidget {
   @override
   _ListviewState createState() => _ListviewState();

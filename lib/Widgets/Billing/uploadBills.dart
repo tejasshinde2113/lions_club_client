@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'dart:async';
 import 'package:file_picker_cross/file_picker_cross.dart';
+import 'package:lionsclub/loginPage.dart';
 
 class UploadBills extends StatefulWidget {
   final String title;
@@ -29,7 +29,7 @@ class _UploadBillsState extends State<UploadBills> {
   String _filePath;
 
   Widget uploadBills() {
-    return ListView(children: <Widget>[
+    return Column(children: <Widget>[
       SizedBox(
         height: 20,
       ),
@@ -78,69 +78,81 @@ class _UploadBillsState extends State<UploadBills> {
       SizedBox(
         height: 10,
       ),
-      Center(
-        child: Row(
-          children: <Widget>[
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ButtonBar(
-                  children: <Widget>[
-                    RaisedButton(
-                      color: Colors.red,
-                      textColor: Colors.white,
-                      child: Text('UPLOAD IMAGE'),
-                      //icon: Icon(Icons.photo),
-                      onPressed: () async => await _pickImageFromGallery(),
-                    ),
-                    RaisedButton(
-                      onPressed: _selectFile,
-                      child: Text('Select File'),
-                    ),
-                    Text('File path: $_filePath (Might cause issues on web)\n'),
-                    Text('File length: $_fileLength\n'),
-                    Text('File as String: $_fileString\n'),
-                  ],
-                ),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: <Widget>[
+          Container(
+            alignment: Alignment.centerRight,
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: RaisedButton(
+                onPressed: _selectFile,
+                child: Text('Select File'),
               ),
             ),
-          ],
-        ),
+          ),
+          Container(
+            alignment: Alignment.centerRight,
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: RaisedButton(
+                color: Colors.red,
+                textColor: Colors.white,
+                child: Text('UPLOAD IMAGE'),
+
+                onPressed: () async => await _pickImageFromGallery(),
+              ),
+            ),
+          ),
+        ],
       ),
+
+
+      if(_filePath != null)
+      Container(
+        child: Text('File path: $_filePath (Might cause issues on web)\n'),
+      ),
+      if (_fileLength !=0)
+        Container(
+          child: Text('File length: $_fileLength\n'),
+        ),
+      if(_fileString != null )
+        Container(
+          child: Text('File as String: $_fileString\n'),
+        ),
       this._imageFile == null
           ? Text('')
           // Placeholder()
 
-          : Padding(
-              padding: const EdgeInsets.only(left: 8.0, right: 290.0),
+          : Flexible(
+            child: Container(
+              alignment: Alignment.centerRight,
               child: Image.file(
                 this._imageFile,
-                height: 50,
-                width: 50,
+                height: 200,
+                width: 200,
+                fit: BoxFit.contain,
               ),
             ),
-      SizedBox(
-        height: 10,
-      ),
-      SizedBox(
-        height: 30,
-      ),
-      Center(
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 8.0),
-          child: FlatButton(
-            color: Colors.red,
-            textColor: Colors.white,
-            child: Text(
-              'SUBMIT',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 15.0,
+          ),
+      Expanded(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 8.0),
+            child: FlatButton(
+              color: Colors.red,
+              textColor: Colors.white,
+              child: Text(
+                'SUBMIT',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15.0,
+                ),
               ),
+              onPressed: () {
+                setState(() {});
+              },
             ),
-            onPressed: () {
-              setState(() {});
-            },
           ),
         ),
       ),

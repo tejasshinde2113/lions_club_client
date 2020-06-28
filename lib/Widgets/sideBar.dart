@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:lionsclub/Widgets/News/news.dart';
 import 'AdminWidget/adminReport.dart';
 import 'ActivityReporting/activityReport.dart';
-import 'Members/memberDirectory.dart';
 import 'gallery.dart';
 import 'upcomingEvent.dart';
+import 'Members/memberDirectory.dart';
+import 'News/news.dart';
 class NavDrawer extends StatefulWidget {
   @override
   _NavDrawerState createState() => _NavDrawerState();
@@ -22,22 +22,6 @@ class _NavDrawerState extends State<NavDrawer> {
     super.initState();
   }
 
-  Widget _starFilling(double fill) {
-    return fill >= 1.0
-        ? Icon(
-      Icons.star,
-      color: Colors.white,
-    )
-        : fill > 0
-        ? Icon(
-      Icons.star_half,
-      color: Colors.white,
-    )
-        : Icon(
-      Icons.star_border,
-      color: Colors.white,
-    );
-  }
   @override
   Widget build(BuildContext context) {
 

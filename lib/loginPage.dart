@@ -12,6 +12,7 @@ class LoginPage extends StatefulWidget {
 
   _LoginPageState createState() => _LoginPageState();
 }
+
 String logoUrl1 = "images/lionLogo2.png";
 String logoUrl2 = "images/lionLogo.png";
 String logoUrl3 = "images/lionLogo1.png";
