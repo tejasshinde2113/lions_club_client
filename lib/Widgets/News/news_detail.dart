@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:lionsclub/Widgets/News/newsArguments.dart';
 import 'package:wc_flutter_share/wc_flutter_share.dart';
 
@@ -18,8 +19,8 @@ class _NewsDetailState extends State<NewsDetail> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.share, color: Colors.white),
-            // onPressed: _shareData,
-            onPressed: null,
+            onPressed: _shareData
+            
           ),
         ],
       ),
@@ -72,17 +73,19 @@ class _NewsDetailState extends State<NewsDetail> {
   }
 
    void _shareData() async {
-
     final NewsArguments todo = ModalRoute.of(context).settings.arguments;
-    
     try {
+      final ByteData bytes = await rootBundle.load(todo.imageUrls);
       await WcFlutterShare.share(
           sharePopupTitle: 'Share',
           subject: todo.newsTitles+'\n',
+          fileName: todo.imageUrls,
           text: todo.newsArticle,
-          mimeType: 'text/plain');
+          mimeType: 'image/png',
+          bytesOfFile: bytes.buffer.asUint8List()
+          );
     } catch (e) {
-      print(e);
+      print('Error ' + e);
     }
   }
 }

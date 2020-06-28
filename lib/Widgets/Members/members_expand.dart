@@ -274,8 +274,6 @@ class _MembersExpansionState extends State<MembersExpansion> {
       ],
     );
 
-    // Widget appBarTitle = Text('ExpansionPanelList', style: TextStyle(color: Colors.white));
-    // Icon icon = Icon(Icons.search, color: Colors.white);
 
     Scaffold scaffold = Scaffold(
       body: List_Criteria,
