@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lionsclub/loginPage.dart';
 
 class AdminReport extends StatefulWidget {
   final String title;
@@ -13,6 +14,7 @@ class _AdminReportState extends State<AdminReport>
   final List<Tab> myTabs = <Tab>[
     Tab(
       text: '1',
+//      icon: Icons.,
     ),
     Tab(
       text: '2',
@@ -64,127 +66,133 @@ class _AdminReportState extends State<AdminReport>
   Widget pageOne() {
     return ListView(children: <Widget>[
       Padding(
-        padding: const EdgeInsets.fromLTRB(15.0, 8.0, 15.0, 8.0),
-        child: TextField(
-          maxLines: 1,
-          textCapitalization: TextCapitalization.sentences,
-          decoration: InputDecoration(
-            labelText: 'Reporting',
-            hintText: 'type something...',
-            border: OutlineInputBorder(),
-          ),
-          onChanged: (text) => setState(() {}),
-        ),
-      ),
-      Spacer(),
-      Padding(
-        padding: const EdgeInsets.fromLTRB(15.0, 8.0, 15.0, 8.0),
-        child: TextField(
-          maxLines: 1,
-          textCapitalization: TextCapitalization.sentences,
-          decoration: InputDecoration(
-            labelText: 'Per Month',
-            hintText: 'type something...',
-            border: OutlineInputBorder(),
-          ),
-          onChanged: (text) => setState(() {}),
-        ),
-      ),
-      Spacer(
-        flex: 2,
-      ),
-      Padding(
-        padding: const EdgeInsets.only(left: 15, right: 15),
+        padding: const EdgeInsets.all(8.0),
         child: Container(
-          height: 58.0,
           decoration: BoxDecoration(
-              border: Border.all(
-            color: Colors.grey,
-          )),
-          child: DropdownButton(
-            isExpanded: true,
-            value: _btn2SelectedVal,
-            underline: Container(),
-            hint: Text(
-              '  Grade',
-              style: TextStyle(),
+            border: Border.all(
+              width: 2.5, //
+              color: mainColor//          <--- border width here
             ),
-            onChanged: ((String newValue) {
-              setState(() {
-                _btn2SelectedVal = newValue;
-              });
-            }),
-            items: _dropDownMenuItems,
+          ),
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.fromLTRB(15.0, 8.0, 15.0, 8.0),
+                child: TextField(
+                  maxLines: 1,
+                  textCapitalization: TextCapitalization.sentences,
+                  decoration: InputDecoration(
+                    labelText: 'Reporting',
+                    border: OutlineInputBorder(),
+                  ),
+                  onChanged: (text) => setState(() {}),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(15.0, 8.0, 15.0, 8.0),
+                child: TextField(
+                  maxLines: 1,
+                  textCapitalization: TextCapitalization.sentences,
+                  decoration: InputDecoration(
+                    labelText: 'Per Month',
+                    border: OutlineInputBorder(),
+                  ),
+                  onChanged: (text) => setState(() {}),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15, right: 15,bottom: 8),
+                child: Container(
+                  height: 58.0,
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.grey,
+                      )),
+                  child: DropdownButton(
+                    isExpanded: true,
+                    value: _btn2SelectedVal,
+                    underline: Container(),
+                    hint: Text(
+                      '  Grade',
+                      style: TextStyle(),
+                    ),
+                    onChanged: ((String newValue) {
+                      setState(() {
+                        _btn2SelectedVal = newValue;
+                      });
+                    }),
+                    items: _dropDownMenuItems,
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),
-      Spacer(
-        flex: 2,
-      ),
-      Divider(
-        color: Colors.red,
-        thickness: 3.0,
-        indent: 20.0,
-        endIndent: 20.0,
-      ),
-      Spacer(),
+
       Padding(
-        padding: const EdgeInsets.fromLTRB(15.0, 8.0, 15.0, 8.0),
-        child: TextField(
-          maxLines: 1,
-          textCapitalization: TextCapitalization.sentences,
-          decoration: InputDecoration(
-            labelText: 'Meetings',
-            hintText: 'type something...',
-            border: OutlineInputBorder(),
-          ),
-          onChanged: (text) => setState(() {}),
-        ),
-      ),
-      Spacer(),
-      Padding(
-        padding: const EdgeInsets.fromLTRB(15.0, 8.0, 15.0, 8.0),
-        child: TextField(
-          maxLines: 1,
-          textCapitalization: TextCapitalization.sentences,
-          decoration: InputDecoration(
-            labelText: 'Per Month',
-            hintText: 'type something...',
-            border: OutlineInputBorder(),
-          ),
-          onChanged: (text) => setState(() {}),
-        ),
-      ),
-      Spacer(
-        flex: 2,
-      ),
-      Padding(
-        padding: const EdgeInsets.only(left: 15, right: 15),
+        padding: const EdgeInsets.all(8.0),
         child: Container(
-          height: 58.0,
           decoration: BoxDecoration(
-              border: Border.all(
-            color: Colors.grey,
-          )),
-          child: DropdownButton(
-            isExpanded: true,
-            value: _bt2SelectedVal,
-            underline: Container(),
-            hint: Text(
-              '  Grade',
-              style: TextStyle(),
+            border: Border.all(
+                width: 2.5, //
+                color: mainColor//          <--- border width here
             ),
-            onChanged: ((String newValue) {
-              setState(() {
-                _bt2SelectedVal = newValue;
-              });
-            }),
-            items: _dropDownMenuItems,
+          ),
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.fromLTRB(15.0, 8.0, 15.0, 8.0),
+                child: TextField(
+                  maxLines: 1,
+                  textCapitalization: TextCapitalization.sentences,
+                  decoration: InputDecoration(
+                    labelText: 'Meetings',
+                    border: OutlineInputBorder(),
+                  ),
+                  onChanged: (text) => setState(() {}),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(15.0, 8.0, 15.0, 8.0),
+                child: TextField(
+                  maxLines: 1,
+                  textCapitalization: TextCapitalization.sentences,
+                  decoration: InputDecoration(
+                    labelText: 'Per Month',
+                    border: OutlineInputBorder(),
+                  ),
+                  onChanged: (text) => setState(() {}),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15, right: 15,bottom: 8),
+                child: Container(
+                  height: 58.0,
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.grey,
+                      )),
+                  child: DropdownButton(
+                    isExpanded: true,
+                    value: _bt2SelectedVal,
+                    underline: Container(),
+                    hint: Text(
+                      '  Grade',
+                      style: TextStyle(),
+                    ),
+                    onChanged: ((String newValue) {
+                      setState(() {
+                        _bt2SelectedVal = newValue;
+                      });
+                    }),
+                    items: _dropDownMenuItems,
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
-      ),
-      Spacer(
-        flex: 8,
       ),
       Center(
         child: FlatButton(
@@ -209,127 +217,132 @@ class _AdminReportState extends State<AdminReport>
   Widget pageTwo() {
     return ListView(children: <Widget>[
       Padding(
-        padding: const EdgeInsets.fromLTRB(15.0, 8.0, 15.0, 8.0),
-        child: TextField(
-          maxLines: 1,
-          textCapitalization: TextCapitalization.sentences,
-          decoration: InputDecoration(
-            labelText: 'Finance',
-            hintText: 'type something...',
-            border: OutlineInputBorder(),
-          ),
-          onChanged: (text) => setState(() {}),
-        ),
-      ),
-      Spacer(),
-      Padding(
-        padding: const EdgeInsets.fromLTRB(15.0, 8.0, 15.0, 8.0),
-        child: TextField(
-          maxLines: 1,
-          textCapitalization: TextCapitalization.sentences,
-          decoration: InputDecoration(
-            labelText: 'Per Month',
-            hintText: 'type something...',
-            border: OutlineInputBorder(),
-          ),
-          onChanged: (text) => setState(() {}),
-        ),
-      ),
-      Spacer(
-        flex: 2,
-      ),
-      Padding(
-        padding: const EdgeInsets.only(left: 15, right: 15),
+        padding: const EdgeInsets.all(8.0),
         child: Container(
-          height: 58.0,
           decoration: BoxDecoration(
-              border: Border.all(
-            color: Colors.grey,
-          )),
-          child: DropdownButton(
-            isExpanded: true,
-            value: _btn1SelectedVal,
-            underline: Container(),
-            hint: Text(
-              '  Grade',
-              style: TextStyle(),
+            border: Border.all(
+                width: 2.5, //
+                color: mainColor//          <--- border width here
             ),
-            onChanged: ((String newValue) {
-              setState(() {
-                _btn1SelectedVal = newValue;
-              });
-            }),
-            items: _dropDownMenuItems,
+          ),
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.fromLTRB(15.0, 8.0, 15.0, 8.0),
+                child: TextField(
+                  maxLines: 1,
+                  textCapitalization: TextCapitalization.sentences,
+                  decoration: InputDecoration(
+                    labelText: 'Finance',
+                    border: OutlineInputBorder(),
+                  ),
+                  onChanged: (text) => setState(() {}),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(15.0, 8.0, 15.0, 8.0),
+                child: TextField(
+                  maxLines: 1,
+                  textCapitalization: TextCapitalization.sentences,
+                  decoration: InputDecoration(
+                    labelText: 'Per Month',
+                    border: OutlineInputBorder(),
+                  ),
+                  onChanged: (text) => setState(() {}),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15, right: 15,bottom: 8),
+                child: Container(
+                  height: 58.0,
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.grey,
+                      )),
+                  child: DropdownButton(
+                    isExpanded: true,
+                    value: _btn1SelectedVal,
+                    underline: Container(),
+                    hint: Text(
+                      '  Grade',
+                      style: TextStyle(),
+                    ),
+                    onChanged: ((String newValue) {
+                      setState(() {
+                        _btn1SelectedVal = newValue;
+                      });
+                    }),
+                    items: _dropDownMenuItems,
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),
-      Spacer(
-        flex: 2,
-      ),
-      Divider(
-        color: Colors.red,
-        thickness: 3.0,
-        indent: 20.0,
-        endIndent: 20.0,
-      ),
-      Spacer(),
       Padding(
-        padding: const EdgeInsets.fromLTRB(15.0, 8.0, 15.0, 8.0),
-        child: TextField(
-          maxLines: 1,
-          textCapitalization: TextCapitalization.sentences,
-          decoration: InputDecoration(
-            labelText: 'Visit',
-            hintText: 'type something...',
-            border: OutlineInputBorder(),
-          ),
-          onChanged: (text) => setState(() {}),
-        ),
-      ),
-      Spacer(),
-      Padding(
-        padding: const EdgeInsets.fromLTRB(15.0, 8.0, 15.0, 8.0),
-        child: TextField(
-          maxLines: 1,
-          textCapitalization: TextCapitalization.sentences,
-          decoration: InputDecoration(
-            labelText: 'Per Month',
-            hintText: 'type something...',
-            border: OutlineInputBorder(),
-          ),
-          onChanged: (text) => setState(() {}),
-        ),
-      ),
-      Spacer(
-        flex: 2,
-      ),
-      Padding(
-        padding: const EdgeInsets.only(left: 15, right: 15),
+        padding: const EdgeInsets.all(8.0),
         child: Container(
-          height: 58.0,
           decoration: BoxDecoration(
-              border: Border.all(
-            color: Colors.grey,
-          )),
-          child: DropdownButton(
-            isExpanded: true,
-            value: _bt1SelectedVal,
-            underline: Container(),
-            hint: Text(
-              '  Grade',
-              style: TextStyle(),
+            border: Border.all(
+                width: 2.5, //
+                color: mainColor//          <--- border width here
             ),
-            onChanged: ((String newValue) {
-              setState(() {
-                _bt1SelectedVal = newValue;
-              });
-            }),
-            items: _dropDownMenuItems,
+          ),
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.fromLTRB(15.0, 8.0, 15.0, 8.0),
+                child: TextField(
+                  maxLines: 1,
+                  textCapitalization: TextCapitalization.sentences,
+                  decoration: InputDecoration(
+                    labelText: 'Visit',
+                    border: OutlineInputBorder(),
+                  ),
+                  onChanged: (text) => setState(() {}),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(15.0, 8.0, 15.0, 8.0),
+                child: TextField(
+                  maxLines: 1,
+                  textCapitalization: TextCapitalization.sentences,
+                  decoration: InputDecoration(
+                    labelText: 'Per Month',
+                    border: OutlineInputBorder(),
+                  ),
+                  onChanged: (text) => setState(() {}),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15, right: 15,bottom: 8),
+                child: Container(
+                  height: 58.0,
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.grey,
+                      )),
+                  child: DropdownButton(
+                    isExpanded: true,
+                    value: _bt1SelectedVal,
+                    underline: Container(),
+                    hint: Text(
+                      '  Grade',
+                      style: TextStyle(),
+                    ),
+                    onChanged: ((String newValue) {
+                      setState(() {
+                        _bt1SelectedVal = newValue;
+                      });
+                    }),
+                    items: _dropDownMenuItems,
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
-      ),
-      Spacer(
-        flex: 8,
       ),
       Center(
         child: FlatButton(
@@ -354,128 +367,143 @@ class _AdminReportState extends State<AdminReport>
   Widget pageThree() {
     return ListView(children: <Widget>[
       Padding(
-        padding: const EdgeInsets.fromLTRB(15.0, 8.0, 15.0, 8.0),
-        child: TextField(
-          maxLines: 1,
-          textCapitalization: TextCapitalization.sentences,
-          decoration: InputDecoration(
-            labelText: 'Publications',
-            hintText: 'type something...',
-            border: OutlineInputBorder(),
-          ),
-          onChanged: (text) => setState(() {}),
-        ),
-      ),
-      Spacer(),
-      Padding(
-        padding: const EdgeInsets.fromLTRB(15.0, 8.0, 15.0, 8.0),
-        child: TextField(
-          maxLines: 1,
-          textCapitalization: TextCapitalization.sentences,
-          decoration: InputDecoration(
-            labelText: 'Per Month',
-            hintText: 'type something...',
-            border: OutlineInputBorder(),
-          ),
-          onChanged: (text) => setState(() {}),
-        ),
-      ),
-      Spacer(
-        flex: 2,
-      ),
-      Padding(
-        padding: const EdgeInsets.only(left: 15, right: 15),
+        padding: const EdgeInsets.all(8.0),
         child: Container(
-          height: 58.0,
           decoration: BoxDecoration(
-              border: Border.all(
-            color: Colors.grey,
-          )),
-          child: DropdownButton(
-            isExpanded: true,
-            value: _btn3SelectedVal,
-            underline: Container(),
-            hint: Text(
-              '  Grade',
-              style: TextStyle(),
+            border: Border.all(
+                width: 2.5, //
+                color: mainColor//          <--- border width here
             ),
-            onChanged: ((String newValue) {
-              setState(() {
-                _btn3SelectedVal = newValue;
-              });
-            }),
-            items: _dropDownMenuItems,
+          ),
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.fromLTRB(15.0, 8.0, 15.0, 8.0),
+                child: TextField(
+                  maxLines: 1,
+                  textCapitalization: TextCapitalization.sentences,
+                  decoration: InputDecoration(
+                    labelText: 'Publications',
+                    border: OutlineInputBorder(),
+                  ),
+                  onChanged: (text) => setState(() {}),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(15.0, 8.0, 15.0, 8.0),
+                child: TextField(
+                  maxLines: 1,
+                  textCapitalization: TextCapitalization.sentences,
+                  decoration: InputDecoration(
+                    labelText: 'Per Month',
+                    border: OutlineInputBorder(),
+                  ),
+                  onChanged: (text) => setState(() {}),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15, right: 15,bottom: 8),
+                child: Container(
+                  height: 58.0,
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.grey,
+                      )),
+                  child: DropdownButton(
+                    isExpanded: true,
+                    value: _btn3SelectedVal,
+                    underline: Container(),
+                    hint: Text(
+                      '  Grade',
+                      style: TextStyle(),
+                    ),
+                    onChanged: ((String newValue) {
+                      setState(() {
+                        _btn3SelectedVal = newValue;
+                      });
+                    }),
+                    items: _dropDownMenuItems,
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),
-      Spacer(
-        flex: 2,
-      ),
+
+
       Divider(
         color: Colors.red,
         thickness: 3.0,
         indent: 20.0,
         endIndent: 20.0,
       ),
-      Spacer(),
+
       Padding(
-        padding: const EdgeInsets.fromLTRB(15.0, 8.0, 15.0, 8.0),
-        child: TextField(
-          maxLines: 1,
-          textCapitalization: TextCapitalization.sentences,
-          decoration: InputDecoration(
-            labelText: 'Membership',
-            hintText: 'type something...',
-            border: OutlineInputBorder(),
-          ),
-          onChanged: (text) => setState(() {}),
-        ),
-      ),
-      Spacer(),
-      Padding(
-        padding: const EdgeInsets.fromLTRB(15.0, 8.0, 15.0, 8.0),
-        child: TextField(
-          maxLines: 1,
-          textCapitalization: TextCapitalization.sentences,
-          decoration: InputDecoration(
-            labelText: 'Per Month',
-            hintText: 'type something...',
-            border: OutlineInputBorder(),
-          ),
-          onChanged: (text) => setState(() {}),
-        ),
-      ),
-      Spacer(
-        flex: 2,
-      ),
-      Padding(
-        padding: const EdgeInsets.only(left: 15, right: 15),
+        padding: const EdgeInsets.all(8.0),
         child: Container(
-          height: 58.0,
           decoration: BoxDecoration(
-              border: Border.all(
-            color: Colors.grey,
-          )),
-          child: DropdownButton(
-            isExpanded: true,
-            value: _bt3SelectedVal,
-            underline: Container(),
-            hint: Text(
-              'Grade',
-              style: TextStyle(),
+            border: Border.all(
+                width: 2.5, //
+                color: mainColor//          <--- border width here
             ),
-            onChanged: ((String newValue) {
-              setState(() {
-                _bt3SelectedVal = newValue;
-              });
-            }),
-            items: _dropDownMenuItems,
+          ),
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.fromLTRB(15.0, 8.0, 15.0, 8.0),
+                child: TextField(
+                  maxLines: 1,
+                  textCapitalization: TextCapitalization.sentences,
+                  decoration: InputDecoration(
+                    labelText: 'Membership',
+                    border: OutlineInputBorder(),
+                  ),
+                  onChanged: (text) => setState(() {}),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(15.0, 8.0, 15.0, 8.0),
+                child: TextField(
+                  maxLines: 1,
+                  textCapitalization: TextCapitalization.sentences,
+                  decoration: InputDecoration(
+                    labelText: 'Per Month',
+                    border: OutlineInputBorder(),
+                  ),
+                  onChanged: (text) => setState(() {}),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15, right: 15,bottom: 8),
+                child: Container(
+                  height: 58.0,
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.grey,
+                      )),
+                  child: DropdownButton(
+                    isExpanded: true,
+                    value: _bt3SelectedVal,
+                    underline: Container(),
+                    hint: Text(
+                      'Grade',
+                      style: TextStyle(),
+                    ),
+                    onChanged: ((String newValue) {
+                      setState(() {
+                        _bt3SelectedVal = newValue;
+                      });
+                    }),
+                    items: _dropDownMenuItems,
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),
-      Spacer(
-        flex: 8,
-      ),
+
       Center(
         child: FlatButton(
             textColor: Colors.white,
@@ -497,131 +525,141 @@ class _AdminReportState extends State<AdminReport>
   }
 
   Widget pageFour() {
-    return ListView(children: <Widget>[
-      Padding(
-        padding: const EdgeInsets.fromLTRB(15.0, 8.0, 15.0, 8.0),
-        child: TextField(
-          maxLines: 1,
-          textCapitalization: TextCapitalization.sentences,
-          decoration: InputDecoration(
-            labelText: 'LCIF',
-            hintText: 'type something...',
-            border: OutlineInputBorder(),
-          ),
-          onChanged: (text) => setState(() {}),
-        ),
-      ),
-      Spacer(),
-      Padding(
-        padding: const EdgeInsets.fromLTRB(15.0, 8.0, 15.0, 8.0),
-        child: TextField(
-          maxLines: 1,
-          textCapitalization: TextCapitalization.sentences,
-          decoration: InputDecoration(
-            labelText: 'Per Month',
-            hintText: 'type something...',
-            border: OutlineInputBorder(),
-          ),
-          onChanged: (text) => setState(() {}),
-        ),
-      ),
-      Spacer(
-        flex: 2,
-      ),
-      Padding(
-        padding: const EdgeInsets.only(left: 15, right: 15),
-        child: Container(
-          height: 58.0,
-          decoration: BoxDecoration(
-              border: Border.all(
-            color: Colors.grey,
-          )),
-          child: DropdownButton(
-            isExpanded: true,
-            value: _btn4SelectedVal,
-            underline: Container(),
-            hint: Text(
-              '  Grade',
-              style: TextStyle(),
+    return ListView(
+        children: <Widget>[
+          SizedBox(height: 10,),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                    width: 2.5, //
+                    color: mainColor//          <--- border width here
+                ),
+              ),
+              child: Column(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(15.0, 8.0, 15.0, 8.0),
+                    child: TextField(
+                      maxLines: 1,
+                      textCapitalization: TextCapitalization.sentences,
+                      decoration: InputDecoration(
+                        labelText: 'LCIF',
+                        border: OutlineInputBorder(),
+                      ),
+                      onChanged: (text) => setState(() {}),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(15.0, 8.0, 15.0, 8.0),
+                    child: TextField(
+                      maxLines: 1,
+                      textCapitalization: TextCapitalization.sentences,
+                      decoration: InputDecoration(
+                        labelText: 'Per Month',
+                        border: OutlineInputBorder(),
+                      ),
+                      onChanged: (text) => setState(() {}),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 15, right: 15,bottom: 8),
+                    child: Container(
+                      height: 58.0,
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.grey,
+                          )),
+                      child: DropdownButton(
+                        isExpanded: true,
+                        value: _btn4SelectedVal,
+                        underline: Container(),
+                        hint: Text(
+                          '  Grade',
+                          style: TextStyle(),
+                        ),
+                        onChanged: ((String newValue) {
+                          setState(() {
+                            _btn4SelectedVal = newValue;
+                          });
+                        }),
+                        items: _dropDownMenuItems,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-            onChanged: ((String newValue) {
-              setState(() {
-                _btn4SelectedVal = newValue;
-              });
-            }),
-            items: _dropDownMenuItems,
           ),
-        ),
-      ),
-      Spacer(
-        flex: 2,
-      ),
-      Divider(
-        color: Colors.red,
-        thickness: 3.0,
-        indent: 20.0,
-        endIndent: 20.0,
-      ),
-      Spacer(),
-      Padding(
-        padding: const EdgeInsets.fromLTRB(15.0, 8.0, 15.0, 8.0),
-        child: TextField(
-          maxLines: 1,
-          textCapitalization: TextCapitalization.sentences,
-          decoration: InputDecoration(
-            labelText: 'Participation',
-            hintText: 'type something...',
-            border: OutlineInputBorder(),
-          ),
-          onChanged: (text) => setState(() {}),
-        ),
-      ),
-      Spacer(),
-      Padding(
-        padding: const EdgeInsets.fromLTRB(15.0, 8.0, 15.0, 8.0),
-        child: TextField(
-          maxLines: 1,
-          textCapitalization: TextCapitalization.sentences,
-          decoration: InputDecoration(
-            labelText: 'Per Month',
-            hintText: 'type something...',
-            border: OutlineInputBorder(),
-          ),
-          onChanged: (text) => setState(() {}),
-        ),
-      ),
-      Spacer(
-        flex: 2,
-      ),
-      Padding(
-        padding: const EdgeInsets.only(left: 15, right: 15),
-        child: Container(
-          height: 58.0,
-          decoration: BoxDecoration(
-              border: Border.all(
-            color: Colors.grey,
-          )),
-          child: DropdownButton(
-            isExpanded: true,
-            value: _bt4SelectedVal,
-            underline: Container(),
-            hint: Text(
-              '  Grade',
-              style: TextStyle(),
+
+
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                    width: 2.5, //
+                    color: mainColor//          <--- border width here
+                ),
+              ),
+              child: Column(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(15.0, 8.0, 15.0, 8.0),
+                    child: TextField(
+                      maxLines: 1,
+                      textCapitalization: TextCapitalization.sentences,
+                      decoration: InputDecoration(
+                        labelText: 'Participation',
+                        border: OutlineInputBorder(),
+                      ),
+                      onChanged: (text) => setState(() {}),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(15.0, 8.0, 15.0, 8.0),
+                    child: TextField(
+                      maxLines: 1,
+                      textCapitalization: TextCapitalization.sentences,
+                      decoration: InputDecoration(
+                        labelText: 'Per Month',
+                        border: OutlineInputBorder(),
+                      ),
+                      onChanged: (text) => setState(() {}),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 15, right: 15),
+                    child: Container(
+                      height: 58.0,
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.grey,
+                          )),
+                      child: DropdownButton(
+                        isExpanded: true,
+                        value: _bt4SelectedVal,
+                        underline: Container(),
+                        hint: Text(
+                          '  Grade',
+                          style: TextStyle(),
+                        ),
+                        onChanged: ((String newValue) {
+                          setState(() {
+                            _bt4SelectedVal = newValue;
+                          });
+                        }),
+                        items: _dropDownMenuItems,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-            onChanged: ((String newValue) {
-              setState(() {
-                _bt4SelectedVal = newValue;
-              });
-            }),
-            items: _dropDownMenuItems,
           ),
-        ),
-      ),
-      Spacer(
-        flex: 8,
-      ),
-      Center(
+
+          Center(
         child: FlatButton(
             textColor: Colors.white,
             color: Colors.red,

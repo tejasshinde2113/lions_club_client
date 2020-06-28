@@ -18,8 +18,7 @@ class _NewsDetailState extends State<NewsDetail> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.share, color: Colors.white),
-            // onPressed: _shareData,
-            onPressed: null,
+             onPressed: _shareData,
           ),
         ],
       ),

@@ -23,26 +23,21 @@ class _ActivityReportState extends State<ActivityReport>
 
   final List<Tab> myTabs = <Tab>[
     Tab(
-      text: "Basic",
-      icon: Icon(
-        Icons.account_circle,
-        size: 35,
-      ),
+      icon: Text(
+        "1"
+      )
     ),
     Tab(
-      text: "Detailed",
-      icon: Icon(
-        Icons.info,
-        size: 35,
-      ),
+        icon: Text(
+            "2"
+        )
     ),
     Tab(
-      text: "Descrption",
-      icon: Icon(
-        Icons.photo,
-        size: 35,
-      ),
+        icon: Text(
+            "3"
+        )
     ),
+
   ];
   String title = 'DropDownButton';
   static const menuItems = <String>[
