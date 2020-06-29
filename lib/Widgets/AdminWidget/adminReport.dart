@@ -432,12 +432,7 @@ class _AdminReportState extends State<AdminReport>
       ),
 
 
-      Divider(
-        color: Colors.red,
-        thickness: 3.0,
-        indent: 20.0,
-        endIndent: 20.0,
-      ),
+
 
       Padding(
         padding: const EdgeInsets.all(8.0),
@@ -487,7 +482,7 @@ class _AdminReportState extends State<AdminReport>
                     value: _bt3SelectedVal,
                     underline: Container(),
                     hint: Text(
-                      'Grade',
+                      '  Grade',
                       style: TextStyle(),
                     ),
                     onChanged: ((String newValue) {

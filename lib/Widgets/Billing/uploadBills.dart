@@ -4,7 +4,6 @@ import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'dart:async';
 import 'package:file_picker_cross/file_picker_cross.dart';
-import 'package:lionsclub/loginPage.dart';
 
 class UploadBills extends StatefulWidget {
   final String title;
@@ -14,11 +13,16 @@ class UploadBills extends StatefulWidget {
 }
 
 class _UploadBillsState extends State<UploadBills> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   File _imageFile;
 
   Future<Null> _pickImageFromGallery() async {
     final File imageFile =
-        await ImagePicker.pickImage(source: ImageSource.gallery);
+    await ImagePicker.pickImage(source: ImageSource.gallery);
     setState(() => this._imageFile = imageFile);
   }
 
@@ -86,8 +90,10 @@ class _UploadBillsState extends State<UploadBills> {
             child: Padding(
               padding: const EdgeInsets.all(10.0),
               child: RaisedButton(
+                color: Colors.red,
+                textColor: Colors.white,
                 onPressed: _selectFile,
-                child: Text('Select File'),
+                child: Text('  SELECT FILE '),
               ),
             ),
           ),
@@ -99,42 +105,45 @@ class _UploadBillsState extends State<UploadBills> {
                 color: Colors.red,
                 textColor: Colors.white,
                 child: Text('UPLOAD IMAGE'),
-
                 onPressed: () async => await _pickImageFromGallery(),
               ),
             ),
           ),
         ],
       ),
-
-
-      if(_filePath != null)
-      Container(
-        child: Text('File path: $_filePath (Might cause issues on web)\n'),
-      ),
-      if (_fileLength !=0)
-        Container(
-          child: Text('File length: $_fileLength\n'),
-        ),
-      if(_fileString != null )
-        Container(
-          child: Text('File as String: $_fileString\n'),
-        ),
-      this._imageFile == null
-          ? Text('')
+      Row(
+        children: <Widget>[
+          if (_filePath != null)
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(left:15 ,right: 40),
+                child: Text('File path: $_filePath \n'),
+              ),
+            ),
+          this._imageFile == null
+              ? Text('')
           // Placeholder()
 
-          : Flexible(
-            child: Container(
-              alignment: Alignment.centerRight,
-              child: Image.file(
-                this._imageFile,
-                height: 200,
-                width: 200,
-                fit: BoxFit.contain,
+              : Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Flexible(
+              child: Container(
+                alignment: Alignment.centerRight,
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 30),
+                  child: Image.file(
+                    this._imageFile,
+                    height: 120,
+                    width: 120,
+                    fit: BoxFit.contain,
+                  ),
+                ),
               ),
             ),
           ),
+        ],
+      ),
+
       Expanded(
         child: Center(
           child: Padding(
@@ -160,12 +169,6 @@ class _UploadBillsState extends State<UploadBills> {
   }
 
   @override
-  void initState() {
-    super.initState();
-    //  _tabController = TabController(vsync: this, length: myTabs.length);
-  }
-
-  @override
   void dispose() {
 //    _tabController.dispose();
     super.dispose();
@@ -187,14 +190,15 @@ class _UploadBillsState extends State<UploadBills> {
 
   void _selectFile() {
     filePicker.pick().then((value) => setState(() {
-          _filePath = filePicker.path;
-          _fileLength = filePicker.toUint8List().lengthInBytes;
-          try {
-            _fileString = filePicker.toString();
-          } catch (e) {
-            _fileString =
-                'Not a text file. Showing base64.\n\n' + filePicker.toBase64();
-          }
-        }));
-}
+      _filePath = filePicker.path;
+
+      _fileLength = filePicker.toUint8List().lengthInBytes;
+      try {
+        _fileString = filePicker.toString();
+      } catch (e) {
+        _fileString =
+            'Not a text file. Showing base64.\n\n' + filePicker.toBase64();
+      }
+    }));
+  }
 }

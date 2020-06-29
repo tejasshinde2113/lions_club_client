@@ -191,8 +191,8 @@ class _MyHomePageState extends State<MyHomePage> {
           shrinkWrap: true,
           physics: ScrollPhysics(),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              childAspectRatio: (MediaQuery.of(context).size.width) / (MediaQuery.of(context).size.height/1.8),
+            crossAxisCount: 2,
+            childAspectRatio: (MediaQuery.of(context).size.width) / (MediaQuery.of(context).size.height/1.8),
           ),
 
           itemCount: 5, itemBuilder: (BuildContext context, int index) {
@@ -202,54 +202,66 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             elevation: 2.0,
             child: Container(
-              child: Column(
-                children: <Widget>[
-                  Builder(builder: (BuildContext context) {
-                    return Align(
-                      alignment: Alignment.topRight,
+              child: FlatButton(
+                onPressed: () {
+                  setState(() {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                EventDescription('Lions International')));
+                  });
+                },
+
+                child: Column(
+                  children: <Widget>[
+                    Builder(builder: (BuildContext context) {
+                      return Align(
+                        alignment: Alignment.topRight,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 5,top: 10,bottom: 5),
+                          child: GestureDetector(
+                            onTap: (){
+                              Share.share(
+                                  "*You are invited* on 2020-05-13 for the following event");
+                            },
+                            child: Icon(
+                              Icons.more_vert,
+                              color: Colors.red,
+                            ),
+                          ),
+                        ),
+                      );
+                    }),
+                    Flexible(
                       child: Padding(
-                        padding: const EdgeInsets.only(right: 5,top: 10,bottom: 5),
-                        child: GestureDetector(
-                          onTap: (){
-                            Share.share(
-                                "*You are invited* on 2020-05-13 for the following event");
-                          },
-                          child: Icon(
-                            Icons.more_vert,
-                            color: Colors.red,
+                        padding: const EdgeInsets.only(bottom: 10.0,left: 10,right: 10),
+                        child: Container(
+                          height: 130,
+                          width: 150,
+                          child: Image.network(
+                            'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS-I9GgqHQ65s_jMNtosTsSajGB-87Y0Oyb5g&usqp=CAU',
+                            fit: BoxFit.cover,
                           ),
                         ),
                       ),
-                    );
-                  }),
-                  Flexible(
-                    child: Padding(
-                      padding: const EdgeInsets.only(bottom: 10.0,left: 10,right: 10),
-                      child: Container(
-                        height: 130,
-                        width: 150,
-                        child: Image.network(
-                          'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS-I9GgqHQ65s_jMNtosTsSajGB-87Y0Oyb5g&usqp=CAU',
-                          fit: BoxFit.cover,
+                    ),
+                    Center(
+                      child: Text(
+                        'Taylor',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
-                  ),
-                  Center(
-                    child: Text(
-                      'Taylor',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
 
-                  Center(child: Text('Description'))
-                ],
+                    Center(child: Text('Description'))
+                  ],
+                ),
               ),
             ),
           );
-          },
+        },
         ),
 
 

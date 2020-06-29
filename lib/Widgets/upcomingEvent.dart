@@ -17,7 +17,7 @@ class _UpcomingEventState extends State<UpcomingEvent> {
           shrinkWrap: true,
           physics: ScrollPhysics(),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
+            crossAxisCount: 2,
             childAspectRatio: (MediaQuery.of(context).size.width) / (MediaQuery.of(context).size.height/1.8),
           ),
           itemCount: 10, itemBuilder: (BuildContext context, int index) {
@@ -27,50 +27,63 @@ class _UpcomingEventState extends State<UpcomingEvent> {
             ),
             elevation: 2.0,
             child: Container(
-              child: Column(
-                children: <Widget>[
-                  Builder(builder: (BuildContext context) {
-                    return Align(
-                      alignment: Alignment.topRight,
+              child: FlatButton(
+                onPressed: (){
+                  setState(() {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                EventDescription('Lions International')));
+                  });
+
+                },
+                child: Column(
+                  children: <Widget>[
+                    Builder(builder: (BuildContext context) {
+                      return Align(
+                        alignment: Alignment.topRight,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 5,top: 10,bottom: 5),
+                          child: GestureDetector(
+                            onTap: (){
+                              Share.share(
+                                  "*You are invited* on 2020-05-13 for the following event");
+                            },
+                            child: Icon(
+                              Icons.more_vert,
+                              color: Colors.red,
+                            ),
+                          ),
+                        ),
+                      );
+                    }),
+                    Flexible(
                       child: Padding(
-                        padding: const EdgeInsets.only(right: 5,top: 10,bottom: 5),
-                        child: GestureDetector(
-                          onTap: (){
-                            Share.share(
-                                "*You are invited* on 2020-05-13 for the following event");
-                          },
-                          child: Icon(
-                            Icons.more_vert,
-                            color: Colors.red,
+                        padding: const EdgeInsets.only(bottom: 10.0,left: 10,right: 10),
+                        child: Container(
+                          height: 130,
+                          width: 150,
+                          child: Image.network(
+                            'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS-I9GgqHQ65s_jMNtosTsSajGB-87Y0Oyb5g&usqp=CAU',
+                            fit: BoxFit.cover,
                           ),
                         ),
                       ),
-                    );
-                  }),
-                  Flexible(
-                    child: Padding(
-                      padding: const EdgeInsets.only(bottom: 10.0,left: 10,right: 10),
-                      child: Container(
-                        height: 130,
-                        width: 150,
-                        child: Image.network(
-                          'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS-I9GgqHQ65s_jMNtosTsSajGB-87Y0Oyb5g&usqp=CAU',
-                          fit: BoxFit.cover,
+                    ),
+                    Center(
+                      child: Text(
+                        'Taylor',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
-                  ),
-                  Center(
-                    child: Text(
-                      'Taylor',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
 
-                  Center(child: Text('Description'))
-                ],
+                    Center(child: Text('Description')),
+
+                  ],
+                ),
               ),
             ),
           );
@@ -540,136 +553,134 @@ class _EventDescriptionState extends State<EventDescription> {
   share(BuildContext context) {}
 
   Widget createDescription() {
+//    return ListView(
+    //    children: <Widget>[
+    //    Container(
+    //    child: Text("eh"),
+    //),
+//        GridView.builder(
+    //        shrinkWrap: true,
+    //      physics: ScrollPhysics(),
+    //    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+    //  itemCount: 5, itemBuilder: (BuildContext context, int index) {
+//          return Card(
+    //          shape: RoundedRectangleBorder(
+    //          borderRadius: BorderRadius.circular(5.0),
+    //      ),
+    ///    elevation: 2.0,
+    // child: Column(
+    //             children: <Widget>[
+//               Builder(builder: (BuildContext context) {
+    //                return FlatButton(
+    //                onPressed: () {
+    //                Share.share(
+    //                  "You are invited on 2020-05-13 for the following event");
+    //          },
+    //        child: Padding(
+    //        padding: const EdgeInsets.only(left: 120.0),
+    //      child: Icon(
+    //     Icons.more_vert,
+    //      color: Colors.red,
+    //    ),
+    //                  ),
+    //              );
+    //          }),
+    //        Padding(
+    //        padding: const EdgeInsets.only(bottom: 1.0),
+    //      child: Image.network(
+    //      'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS-I9GgqHQ65s_jMNtosTsSajGB-87Y0Oyb5g&usqp=CAU',
+    //    height: 100,
+    //  width: 150,
+    //fit: BoxFit.cover,
+    //                ),
+    //            ),
+    //          Text(
+    //          'Taylor',
+    //        style: TextStyle(
+    //        fontWeight: FontWeight.bold,
+    //    ),
+    //        ),
+    //      Text('Description')
+    //  ],
+    //          ),
+    //      );
+    //  },
+    //      ),
+    //  ],
+    // );
     return ListView(
       children: <Widget>[
-        Container(
-          child: Text("ehllo"),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Image.network('https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS-I9GgqHQ65s_jMNtosTsSajGB-87Y0Oyb5g&usqp=CAU',
+              height: 130,
+              width: 220,
+            ),
+          ),
         ),
-        GridView.builder(
-          shrinkWrap: true,
-          physics: ScrollPhysics(),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-          itemCount: 5, itemBuilder: (BuildContext context, int index) {
-          return Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(5.0),
-            ),
-            elevation: 2.0,
-
-            child: Column(
-              children: <Widget>[
-                Builder(builder: (BuildContext context) {
-                  return FlatButton(
-                    onPressed: () {
-                      Share.share(
-                          "You are invited on 2020-05-13 for the following event");
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 120.0),
-                      child: Icon(
-                        Icons.more_vert,
-                        color: Colors.red,
-                      ),
-                    ),
-                  );
-                }),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 1.0),
-                  child: Image.network(
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS-I9GgqHQ65s_jMNtosTsSajGB-87Y0Oyb5g&usqp=CAU',
-                    height: 100,
-                    width: 150,
-                    fit: BoxFit.cover,
-                  ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            'Test Event',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+        ),
+        SizedBox(
+          height: 20,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+          child: Row(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(left: 12.0),
+                child: Icon(
+                  Icons.calendar_today,
+                  color: Colors.red,
                 ),
-                Text(
-                  'Taylor',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                child: Text('22-08-2020'),
+              )
+            ],
+          ),
+        ),
+        SizedBox(
+          height: 20,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 8.0, right: 220.0),
+          child: Text('Description......................'),
+        ),
+        SizedBox(
+          height: 250,
+        ),
+        Center(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 8.0),
+            child: FlatButton(
+              color: Colors.red,
+              textColor: Colors.white,
+              child: Text(
+                'SUMBIT',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20.0,
                 ),
-                Text('Description')
-              ],
+              ),
+              onPressed: () {
+                setState(() {});
+              },
             ),
-          );
-        },
+          ),
         ),
       ],
     );
-//    return ListView(
-//      children: <Widget>[
-//        Expanded(
-//          child: Padding(
-//            padding: const EdgeInsets.all(8.0),
-//            child: Image.network(
-//              'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS-I9GgqHQ65s_jMNtosTsSajGB-87Y0Oyb5g&usqp=CAU',
-//              height: 130,
-//              width: 220,
-//            ),
-//          ),
-//        ),
-//        Padding(
-//          padding: const EdgeInsets.all(8.0),
-//          child: Text(
-//            'Test Event',
-//            style: TextStyle(fontWeight: FontWeight.bold),
-//          ),
-//        ),
-//        SizedBox(
-//          height: 20,
-//        ),
-//        Padding(
-//          padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-//          child: Row(
-//            children: <Widget>[
-//              Padding(
-//                padding: const EdgeInsets.only(left: 12.0),
-//                child: Icon(
-//                  Icons.calendar_today,
-//                  color: Colors.red,
-//                ),
-//              ),
-//              SizedBox(
-//                height: 10,
-//              ),
-//              Padding(
-//                padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-//                child: Text('22-08-2020'),
-//              )
-//            ],
-//          ),
-//        ),
-//        SizedBox(
-//          height: 20,
-//        ),
-//        Padding(
-//          padding: const EdgeInsets.only(left: 8.0, right: 220.0),
-//          child: Text('Description......................'),
-//        ),
-//        SizedBox(
-//          height: 250,
-//        ),
-//        Center(
-//          child: Padding(
-//            padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 8.0),
-//            child: FlatButton(
-//              color: Colors.red,
-//              textColor: Colors.white,
-//              child: Text(
-//                'SUMBIT',
-//                style: TextStyle(
-//                  fontWeight: FontWeight.bold,
-//                  fontSize: 20.0,
-//                ),
-//              ),
-//              onPressed: () {
-//                setState(() {});
-//              },
-//            ),
-//          ),
-//        ),
-//      ],
-//    );
   }
 
   @override
