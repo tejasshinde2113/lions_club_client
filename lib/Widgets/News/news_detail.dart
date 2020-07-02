@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:lionsclub/Widgets/Members/memberDirectory.dart';
 import 'package:lionsclub/Widgets/News/newsArguments.dart';
+import 'package:lionsclub/Widgets/gallery.dart';
+import 'package:lionsclub/Widgets/upcomingEvent.dart';
 import 'package:wc_flutter_share/wc_flutter_share.dart';
 
 class NewsDetail extends StatefulWidget {
@@ -19,12 +22,7 @@ class _NewsDetailState extends State<NewsDetail> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.share, color: Colors.white),
-
             onPressed: _shareData
-            
-
-
-
           ),
         ],
       ),
@@ -93,3 +91,27 @@ class _NewsDetailState extends State<NewsDetail> {
     }
   }
 }
+
+
+//    TODAY -> 2 JULY
+
+//    TARGET -> 12 JULY
+
+
+// TOTAL 10 DAYS
+
+// ACTIVITY REPORTING -> TEJAS ---------------\ 3 DAYS       ----------------------- 5 JULY
+// ADMIN REPORTING    -> TEJAS ----------------\   1 DAYS    ----------------------- 6 JULY
+                                                                                              //   8DAYS    (2 DAYs) MERGE SUJIT
+// BILLING            -> TEJAS -----------------/  2 DAY     ----------------------- 8 JULY
+
+                                                                                              // profile -> SUJIT
+
+// UpcomingEvent      -> Prateek ----------------/  2 DAY    ----------------------- 4 JULY
+// Gallery            -> Prateek  ---------------\  2 DAY     ----------------------- 6 JULY
+// MemberDirectory    -> Prateek ------------------ 2 DAYS    ----------------------- 8 JULY
+// NewsDetail         -> Prateek ----------------/  2 DAYS   ----------------------- 10 JULY
+
+
+
+

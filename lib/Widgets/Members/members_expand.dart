@@ -7,7 +7,7 @@ class MembersExpansion extends StatefulWidget {
 }
 
 class _MembersExpansionState extends State<MembersExpansion> {
-  ListView List_Criteria;
+  ListView listCriteria;
   
   List<MemberItem> items = <MemberItem>[
     
@@ -121,8 +121,8 @@ class _MembersExpansionState extends State<MembersExpansion> {
           'https://upload.wikimedia.org/wikipedia/en/thumb/5/5b/Lions_Clubs_International_logo.svg/1200px-Lions_Clubs_International_logo.svg.png',
           height: 40,
           width: 40,
-        )),
-
+        )
+    ),
     MemberItem(
         false,
         'Sujit',
@@ -240,7 +240,7 @@ class _MembersExpansionState extends State<MembersExpansion> {
 
   @override
   Widget build(BuildContext context) {
-    List_Criteria = ListView(
+    listCriteria = ListView(
       children: <Widget>[
         Padding(
           padding: EdgeInsets.all(10.0),
@@ -276,7 +276,7 @@ class _MembersExpansionState extends State<MembersExpansion> {
 
 
     Scaffold scaffold = Scaffold(
-      body: List_Criteria,
+      body: listCriteria,
     );
     return scaffold;
   }

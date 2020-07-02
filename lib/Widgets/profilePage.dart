@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lionsclub/loginPage.dart';
+import 'Models/userModel.dart';
 class ProfilePage extends StatefulWidget {
   final String title;
   @override
@@ -9,7 +10,7 @@ class ProfilePage extends StatefulWidget {
 
 
 class _ProfilePageState extends State<ProfilePage> {
-  String name = "Sujit Jailwaliya";
+  String name = "Sujit";
   String mobileNumber = "7037251245";
   String mail = "jaiwaliyas@gmail.com";
   String designation = "District Governor";
