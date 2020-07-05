@@ -157,7 +157,7 @@ class _LoginPageState extends State<LoginPage>{
           padding: const EdgeInsets.only(left: 50,right: 50,top: 10),
           child: GestureDetector(
             onTap: (){
-//                return _navigateToLogin(context);
+         //       return _navigateToLogin(context);
             },
             child: Container(
               alignment: Alignment.bottomLeft,
@@ -202,7 +202,7 @@ class _LoginPageState extends State<LoginPage>{
           padding: const EdgeInsets.only(left: 50,right: 50,top: 10),
           child: GestureDetector(
             onTap: (){
-//                return _navigateToLogin(context);
+           //     return _navigateToLogin(context);
             },
             child: Container(
               alignment: Alignment.bottomLeft,
