@@ -7,7 +7,7 @@ import 'Widgets/ActivityReporting/activityReport.dart';
 import 'package:lionsclub/Widgets/profilePage.dart';
 import 'Widgets/Billing/uploadBills.dart';
 import 'package:share/share.dart';
-import 'Widgets/Models/userModel.dart';
+import 'Widgets/ActivityReporting/userModel.dart';
 
 class MyHomePage extends StatefulWidget {
 

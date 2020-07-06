@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lionsclub/loginPage.dart';
-import 'Models/userModel.dart';
+import 'ActivityReporting/userModel.dart';
 class ProfilePage extends StatefulWidget {
   final String title;
   @override
