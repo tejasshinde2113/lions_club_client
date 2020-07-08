@@ -16,7 +16,6 @@ class ActivityReport extends StatefulWidget {
 
 class _ActivityReportState extends State<ActivityReport>
     with SingleTickerProviderStateMixin {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +35,6 @@ class _ActivityReportState extends State<ActivityReport>
     );
   }
 
-
   Widget createBody() {
     return TabBarView(controller: _tabController, children: <Widget>[
       basicInformation(),
@@ -47,7 +45,21 @@ class _ActivityReportState extends State<ActivityReport>
 
   dynamic _controller;
 
+  // private variables
 
+  String activityTitle;
+  String activityType;
+  String activityDate;
+  String activityPlace;
+  String activityCity;
+  String lionsHours;
+  String peopleServed;
+  String amountSpent;
+  String cabinetOfficers;
+  String mediaCoverage;
+  String bigDescription;
+  dynamic chooseImage;
+  String uploadLink;
 
   Widget basicInformation() {
     return ListView(
@@ -88,9 +100,7 @@ class _ActivityReportState extends State<ActivityReport>
         ),
         Padding(
           padding: const EdgeInsets.only(left: 15, right: 15),
-
           child: Container(
-
             height: 58.0,
             decoration: BoxDecoration(
                 border: Border.all(
@@ -203,11 +213,6 @@ class _ActivityReportState extends State<ActivityReport>
             onPressed: () {
               setState(() {
                 _tabController.animateTo((_tabController.index + 1) % 3);
-//                  Navigator.push(
-//                      context,
-//                      MaterialPageRoute(
-//                          builder: (context) =>
-//                              Description('Activity reporting')));
               });
             },
           ),
@@ -236,7 +241,7 @@ class _ActivityReportState extends State<ActivityReport>
       Padding(
         padding: const EdgeInsets.all(8.0),
         child: TextField(
-           controller: this._controller,
+          controller: this._controller,
           maxLines: 1,
           textCapitalization: TextCapitalization.sentences,
           decoration: InputDecoration(
@@ -369,7 +374,7 @@ class _ActivityReportState extends State<ActivityReport>
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextField(
-               controller: this._controller,
+              controller: this._controller,
               maxLines: 3,
               textCapitalization: TextCapitalization.sentences,
               decoration: InputDecoration(
@@ -408,8 +413,7 @@ class _ActivityReportState extends State<ActivityReport>
                           textColor: Colors.white,
                           child: Text('CHOOSE IMAGE'),
                           //icon: Icon(Icons.photo),
-                          onPressed: () async =>
-                              await _pickImageFromGallery(),
+                          onPressed: () async => await _pickImageFromGallery(),
 
                           // tooltip: 'Pick from gallery',
                         ),
@@ -462,10 +466,7 @@ class _ActivityReportState extends State<ActivityReport>
                 decoration: BoxDecoration(
                   color: Colors.red,
                 ),
-
                 child: GestureDetector(
-
-
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
@@ -478,16 +479,25 @@ class _ActivityReportState extends State<ActivityReport>
                     ),
                   ),
                   onTap: () {
+                    // API CALL
+                    addactivity(
+                        activityTitle,
+                        amountSpent,
+                        activityCity,
+                        activityDate,
+                        cabinetOfficers,
+                        bigDescription,
+                        lionsHours,
+                        mediaCoverage,
+                        peopleServed,
+                        activityType,
+                        " ",
+                        " ",
+                        chooseImage,
+                        uploadLink);
+
                     return _navigateToSubmit(context);
-
                   },
-
-                //  onPressed: () {
-               //   setState(() {
-                    //TextField() onchanged ? controller;
-                  //_tabController.animateTo((_tabController.index + 1) % 3);
-               // });
-                 //},
                 ),
               ),
             ),
@@ -495,30 +505,15 @@ class _ActivityReportState extends State<ActivityReport>
         ]);
   }
 
-
-  String activityTitle;
-  String activityType;
-  String activityDate;
-  String activityPlace;
-  String activityCity;
-  String lionsHours;
-  String peopleServed;
-  String amountSpent;
-  String cabinetOfficers;
-  String mediaCoverage;
-  String bigDescription;
-  dynamic chooseImage;
-  String uploadLink;
-
-
-
   File _imageFile;
 
   Future<Null> _pickImageFromGallery() async {
     final File imageFile =
-    await ImagePicker.pickImage(source: ImageSource.gallery);
-    setState(() { this._imageFile = imageFile;
-    chooseImage = imageFile;});
+        await ImagePicker.pickImage(source: ImageSource.gallery);
+    setState(() {
+      this._imageFile = imageFile;
+      chooseImage = imageFile;
+    });
   }
 
   final List<Tab> myTabs = <Tab>[
@@ -544,17 +539,17 @@ class _ActivityReportState extends State<ActivityReport>
   final List<DropdownMenuItem<String>> _dropDownMenuItems = menuItems
       .map(
         (String value) => DropdownMenuItem<String>(
-      value: value,
-      child: Text(value),
-    ),
-  )
+          value: value,
+          child: Text(value),
+        ),
+      )
       .toList();
 
   String _btn2SelectedVal;
   TabController _tabController;
 
+  // local private variables
 
-  static Activities act;
   Future<Activities> addactivity(
       String activityTitle,
       String amount,
@@ -583,13 +578,10 @@ class _ActivityReportState extends State<ActivityReport>
       "peopleServed": peopleServed,
       "activityType": activityType,
       "place": activityPlace,
-      "authorId" : "",
+      "authorId": "",
       "clubId": "",
       "image": "dynamic",
-
-     // 'add-activity': 'true'
-
-
+      'add-activity': 'true'
     };
 
     var response = await http.post(
@@ -597,8 +589,7 @@ class _ActivityReportState extends State<ActivityReport>
       body: data,
     );
 
-
-    Activities act = Activities(description,city,clubId,authorId,activityTitle,activityType,date,amount,cabinetOfficers,mediaCoverage,peopleServed,place,image,lionHours);
+    // Activities act = Activities(description,city,clubId,authorId,activityTitle,activityType,date,amount,cabinetOfficers,mediaCoverage,peopleServed,place,image,lionHours);
 
     print("Response status: ${response.statusCode}");
     Map userMap = jsonDecode(response.body);
@@ -607,51 +598,50 @@ class _ActivityReportState extends State<ActivityReport>
 //    userMap['details'] = array[]
 //    userMap['details']['name'] // name = ritam
 
-    print("description:" + userMap["details"]["description"]);
+    // print("description:" + userMap["details"]["description"]);
 
-    act = Activities(
-        userMap["details"]["activityTitle"],
-        userMap["details"]["amount"],
-        userMap["details"]["city"],
-        userMap["details"]["date"],
-        userMap["details"]["cabinetOfficers"],
-        userMap["details"]["clubId"],
-        userMap["details"]["lionHours"],
-        userMap["details"]["description"],
-        userMap["details"]["mediaCoverage"],
-        userMap["details"]["peopleServed"],
-        userMap["details"]["activityType"],
-        userMap["details"]["place"],
-        userMap["details"]["image"],
-        userMap["details"]["authorId"]);
+    // act = Activities(
+    //     userMap["details"]["activityTitle"],
+    //     userMap["details"]["amount"],
+    //     userMap["details"]["city"],
+    //     userMap["details"]["date"],
+    //     userMap["details"]["cabinetOfficers"],
+    //     userMap["details"]["clubId"],
+    //     userMap["details"]["lionHours"],
+    //     userMap["details"]["description"],
+    //     userMap["details"]["mediaCoverage"],
+    //     userMap["details"]["peopleServed"],
+    //     userMap["details"]["activityType"],
+    //     userMap["details"]["place"],
+    //     userMap["details"]["image"],
+    //     userMap["details"]["authorId"]);
 
-    return act;
+    // return act;
   }
 
   void _navigateToSubmit(BuildContext context) {
-    var object = addactivity(
-        "activityTitle",
-        "amount",
-        "city",
-        "date",
-        "cabinetOfficers",
-        "description",
-        "lionHours",
-        "mediaCoverage",
-        "peopleServed",
-        "activityType",
-        "place",
-        "authorId",
-        "clubId",
-        "image");
+    print("Navigate to submit");
+    // var object = addactivity(
+    //     "activityTitle",
+    //     "amount",
+    //     "city",
+    //     "date",
+    //     "cabinetOfficers",
+    //     "description",
+    //     "lionHours",
+    //     "mediaCoverage",
+    //     "peopleServed",
+    //     "activityType",
+    //     "place",
+    //     "authorId",
+    //     "clubId",
+    //     "image");
 
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => ActivityReport(widget.title)),
-    );
+    // Navigator.push(
+    //   context,
+    //   MaterialPageRoute(builder: (context) => ActivityReport(widget.title)),
+    // );
   }
-
-
 
   @override
   void initState() {
@@ -664,6 +654,4 @@ class _ActivityReportState extends State<ActivityReport>
     _tabController.dispose();
     super.dispose();
   }
-
-
 }
