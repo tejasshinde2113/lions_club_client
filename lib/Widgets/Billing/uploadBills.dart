@@ -4,6 +4,10 @@ import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'dart:async';
 import 'package:file_picker_cross/file_picker_cross.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+import 'package:lionsclub/Widgets/Billing/uploadmodel.dart';
+
 
 class UploadBills extends StatefulWidget {
   final String title;
@@ -13,24 +17,20 @@ class UploadBills extends StatefulWidget {
 }
 
 class _UploadBillsState extends State<UploadBills> {
+
   @override
-  void initState() {
-    super.initState();
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: createBody(),
+    );
   }
 
-  File _imageFile;
-
-  Future<Null> _pickImageFromGallery() async {
-    final File imageFile =
-    await ImagePicker.pickImage(source: ImageSource.gallery);
-    setState(() => this._imageFile = imageFile);
+  createBody() {
+    return uploadBills();
   }
-
-  FilePickerCross filePicker = FilePickerCross();
-
-  String _fileString;
-  int _fileLength = 0;
-  String _filePath;
 
   Widget uploadBills() {
     return Column(children: <Widget>[
@@ -40,13 +40,16 @@ class _UploadBillsState extends State<UploadBills> {
       Padding(
         padding: const EdgeInsets.all(8.0),
         child: TextField(
+          controller: this._controller,
           maxLines: 1,
           textCapitalization: TextCapitalization.sentences,
           decoration: InputDecoration(
             labelText: 'Venue',
             border: OutlineInputBorder(),
           ),
-          onChanged: (text) => setState(() {}),
+          onChanged: (text) => setState(() {
+            venue = text;
+          }),
         ),
       ),
       SizedBox(
@@ -55,13 +58,16 @@ class _UploadBillsState extends State<UploadBills> {
       Padding(
         padding: const EdgeInsets.all(8.0),
         child: TextField(
+          controller: this._controller,
           maxLines: 1,
           textCapitalization: TextCapitalization.sentences,
           decoration: InputDecoration(
             labelText: 'Select Date',
             border: OutlineInputBorder(),
           ),
-          onChanged: (text) => setState(() {}),
+          onChanged: (text) => setState(() {
+            selectDate = text;
+          }),
         ),
       ),
       SizedBox(
@@ -70,13 +76,16 @@ class _UploadBillsState extends State<UploadBills> {
       Padding(
         padding: const EdgeInsets.all(8.0),
         child: TextField(
+          controller: this._controller,
           maxLines: 1,
           textCapitalization: TextCapitalization.sentences,
           decoration: InputDecoration(
             labelText: 'Amount ',
             border: OutlineInputBorder(),
           ),
-          onChanged: (text) => setState(() {}),
+          onChanged: (text) => setState(() {
+            amount = text;
+          }),
         ),
       ),
       SizedBox(
@@ -86,6 +95,7 @@ class _UploadBillsState extends State<UploadBills> {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
           Container(
+
             alignment: Alignment.centerRight,
             child: Padding(
               padding: const EdgeInsets.all(10.0),
@@ -144,22 +154,37 @@ class _UploadBillsState extends State<UploadBills> {
         ],
       ),
 
-      Expanded(
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 8.0),
-            child: FlatButton(
+      Center(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 8.0),
+          child: Container(
+            decoration: BoxDecoration(
               color: Colors.red,
-              textColor: Colors.white,
-              child: Text(
-                'SUBMIT',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 15.0,
+            ),
+            child: GestureDetector(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'SUBMIT',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20.0,
+                    color: Colors.white,
+                  ),
                 ),
               ),
-              onPressed: () {
-                setState(() {});
+              onTap: () {
+                // API CALL
+                addbills(
+                  venue,
+                  selectDate,
+                  selectFile,
+                  amount,
+                  uploadImage,
+
+                );
+
+                return _navigateToSubmit(context);
               },
             ),
           ),
@@ -168,31 +193,95 @@ class _UploadBillsState extends State<UploadBills> {
     ]);
   }
 
-  @override
-  void dispose() {
-//    _tabController.dispose();
-    super.dispose();
+
+  dynamic _controller;
+  String venue;
+  String selectDate;
+  String amount;
+  dynamic selectFile;
+  dynamic uploadImage;
+
+
+  Future<UploadBillsApi> addbills(
+      String venue,
+      String amount,
+      String selectDate,
+      dynamic  selectFile,
+      dynamic uploadImage,
+
+
+      ) async {
+    var url = 'http://lions3234d2.com/api.php';
+    Map data = {
+
+      "" :venue,
+      "" :selectFile,
+      "" : selectDate,
+      "" :amount,
+      "" : uploadImage,
+
+    };
+
+    var response = await http.post(
+      url,
+      body: data,
+    );
+
+    // Activities act = Activities(description,city,clubId,authorId,activityTitle,activityType,date,amount,cabinetOfficers,mediaCoverage,peopleServed,place,image,lionHours);
+
+    print("Response status: ${response.statusCode}");
+    Map userMap = jsonDecode(response.body);
+    print("Response body: " + userMap.toString());
+
+
+    // print("description:" + userMap["details"]["description"]);
+
   }
 
-  createBody() {
-    return uploadBills();
-  }
+  void _navigateToSubmit  (BuildContext context) {
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: createBody(),
+    print("Navigate to submit");
+
+    // var object = AdminReportApi(
+
+
+    //         );
+
+
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => UploadBills(widget.title)),
     );
   }
+
+
+
+
+
+  File _imageFile;
+
+
+  Future<Null> _pickImageFromGallery() async {
+    final File imageFile =
+    await ImagePicker.pickImage(source: ImageSource.gallery);
+    setState(() { this._imageFile = imageFile;
+    uploadImage = imageFile;});
+  }
+
+  FilePickerCross filePicker = FilePickerCross();
+
+  String _fileString;
+  //int _fileLength = 0;
+  String _filePath;
+
 
   void _selectFile() {
     filePicker.pick().then((value) => setState(() {
       _filePath = filePicker.path;
+      selectFile = filePicker.path;
 
-      _fileLength = filePicker.toUint8List().lengthInBytes;
+   //   _fileLength = filePicker.toUint8List().lengthInBytes;
       try {
         _fileString = filePicker.toString();
       } catch (e) {
@@ -201,4 +290,16 @@ class _UploadBillsState extends State<UploadBills> {
       }
     }));
   }
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+//    _tabController.dispose();
+    super.dispose();
+  }
+
 }

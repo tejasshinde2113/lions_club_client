@@ -13,7 +13,7 @@ class Activities{
   String  place;
   String  authorId;
   String  clubId;
-  dynamic  image;
+ // dynamic  image;
 
 
   Activities(
@@ -30,7 +30,7 @@ class Activities{
   this.place,
   this.authorId,
   this.clubId,
-  this.image,
+  //this.image,
 
       );
 

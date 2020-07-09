@@ -5,7 +5,7 @@ import 'dart:io';
 import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:lionsclub/Widgets/Models/activityModel.dart';
+import 'file:///G:/flutter/lions_club/lib/Widgets/ActivityReporting/activityModel.dart';
 
 class ActivityReport extends StatefulWidget {
   final String title;
@@ -43,23 +43,7 @@ class _ActivityReportState extends State<ActivityReport>
     ]);
   }
 
-  dynamic _controller;
 
-  // private variables
-
-  String activityTitle;
-  String activityType;
-  String activityDate;
-  String activityPlace;
-  String activityCity;
-  String lionsHours;
-  String peopleServed;
-  String amountSpent;
-  String cabinetOfficers;
-  String mediaCoverage;
-  String bigDescription;
-  dynamic chooseImage;
-  String uploadLink;
 
   Widget basicInformation() {
     return ListView(
@@ -493,7 +477,7 @@ class _ActivityReportState extends State<ActivityReport>
                         activityType,
                         " ",
                         " ",
-                        chooseImage,
+                      //  chooseImage,
                         uploadLink);
 
                     return _navigateToSubmit(context);
@@ -505,14 +489,33 @@ class _ActivityReportState extends State<ActivityReport>
         ]);
   }
 
+  dynamic _controller;
+
+  // private variables
+
+  String activityTitle;
+  String activityType;
+  String activityDate;
+  String activityPlace;
+  String activityCity;
+  String lionsHours;
+  String peopleServed;
+  String amountSpent;
+  String cabinetOfficers;
+  String mediaCoverage;
+  String bigDescription;
+  dynamic chooseImage;
+  String uploadLink;
+
   File _imageFile;
+
 
   Future<Null> _pickImageFromGallery() async {
     final File imageFile =
         await ImagePicker.pickImage(source: ImageSource.gallery);
     setState(() {
       this._imageFile = imageFile;
-      chooseImage = imageFile;
+      chooseImage = imageFile.path;
     });
   }
 
@@ -564,7 +567,7 @@ class _ActivityReportState extends State<ActivityReport>
       String place,
       dynamic authorId,
       dynamic clubId,
-      dynamic image) async {
+      ) async {
     var url = 'http://lions3234d2.com/api.php';
     Map data = {
       "activityTitle": activityTitle,
@@ -616,7 +619,7 @@ class _ActivityReportState extends State<ActivityReport>
     //     userMap["details"]["image"],
     //     userMap["details"]["authorId"]);
 
-    // return act;
+    // return addactivity(activityTitle, amount, city, date, cabinetOfficers, description, lionHours, mediaCoverage, peopleServed, activityType, place, authorId, clubId, image);
   }
 
   void _navigateToSubmit(BuildContext context) {
@@ -637,10 +640,10 @@ class _ActivityReportState extends State<ActivityReport>
     //     "clubId",
     //     "image");
 
-    // Navigator.push(
-    //   context,
-    //   MaterialPageRoute(builder: (context) => ActivityReport(widget.title)),
-    // );
+     Navigator.push(
+       context,
+       MaterialPageRoute(builder: (context) => ActivityReport(widget.title)),
+     );
   }
 
   @override
