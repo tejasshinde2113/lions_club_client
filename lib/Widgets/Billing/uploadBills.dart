@@ -60,6 +60,7 @@ class _UploadBillsState extends State<UploadBills> {
         child: TextField(
           controller: this._controller,
           maxLines: 1,
+          keyboardType: TextInputType.datetime,
           textCapitalization: TextCapitalization.sentences,
           decoration: InputDecoration(
             labelText: 'Select Date',
@@ -78,6 +79,7 @@ class _UploadBillsState extends State<UploadBills> {
         child: TextField(
           controller: this._controller,
           maxLines: 1,
+          keyboardType: TextInputType.number,
           textCapitalization: TextCapitalization.sentences,
           decoration: InputDecoration(
             labelText: 'Amount ',

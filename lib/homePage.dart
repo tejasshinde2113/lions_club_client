@@ -29,7 +29,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Container(
             height: 200,
             child: Center(
-              child: Image.asset(logoUrl3),
+              child: Image.asset('images/logo.png'),
               //Text("IMAGE Portion"),
             ),
           ),

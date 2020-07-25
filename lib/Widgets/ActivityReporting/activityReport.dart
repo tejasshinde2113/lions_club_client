@@ -130,6 +130,7 @@ class _ActivityReportState extends State<ActivityReport>
           child: TextField(
             controller: this._controller,
             maxLines: 1,
+            keyboardType: TextInputType.datetime,
             textCapitalization: TextCapitalization.sentences,
             decoration: InputDecoration(
               //counterText: '${this._controller.text.split(' ').length} words',
@@ -183,6 +184,7 @@ class _ActivityReportState extends State<ActivityReport>
         SizedBox(
           height: 20,
         ),
+
         Center(
           child: FlatButton(
             textColor: Colors.white,
@@ -227,6 +229,7 @@ class _ActivityReportState extends State<ActivityReport>
         child: TextField(
           controller: this._controller,
           maxLines: 1,
+          keyboardType: TextInputType.number,
           textCapitalization: TextCapitalization.sentences,
           decoration: InputDecoration(
             // counterText: '${this._controller.text.split(' ').length} words',
@@ -246,6 +249,7 @@ class _ActivityReportState extends State<ActivityReport>
         child: TextField(
           controller: this._controller,
           maxLines: 1,
+          keyboardType: TextInputType.number,
           textCapitalization: TextCapitalization.sentences,
           decoration: InputDecoration(
             //counterText: '${this._controller.text.split(' ').length} words',
@@ -265,6 +269,7 @@ class _ActivityReportState extends State<ActivityReport>
         child: TextField(
           controller: this._controller,
           maxLines: 1,
+          keyboardType: TextInputType.number,
           textCapitalization: TextCapitalization.sentences,
           decoration: InputDecoration(
             //counterText: '${this._controller.text.split(' ').length} words',

@@ -63,7 +63,10 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Widget setMobileNumber(){
     return ListTile(
-      leading: Padding(
+
+
+
+       leading:Padding(
         padding: const EdgeInsets.all(10.0),
         child: Icon(
           Icons.call,
@@ -169,7 +172,7 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
         setDesignation(),
         SizedBox(
-          height: 25,
+          height: 10,
         ),
       ],
     );

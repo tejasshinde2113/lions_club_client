@@ -11,9 +11,8 @@ class NavDrawer extends StatefulWidget {
 }
 
 class _NavDrawerState extends State<NavDrawer> {
-  var _photoUrl =
-      'https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80';
-  var _name = 'Club Name';
+
+  var _name = 'Lions International';
   var _email = 'clubId@email.com';
   var _phone = '0987654321';
 
@@ -29,13 +28,13 @@ class _NavDrawerState extends State<NavDrawer> {
       child: Row(
         children: <Widget>[
           Container(
-            width: 80,
-            height: 80,
+            width: 90,
+            height: 90,
             decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
                     fit: BoxFit.fill,
-                    image: NetworkImage(_photoUrl))),
+                    image: AssetImage('images/logo.png'))),
           ),
           Flexible(
             child: Padding(
@@ -224,6 +223,32 @@ class _NavDrawerState extends State<NavDrawer> {
                 )
               },
             ),
+
+            SizedBox(height: 20,),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Text('Copyright 2021 @ Lions District 32334D2',
+              style: TextStyle(
+                fontSize: 22
+              ),),
+            ),
+            SizedBox(height: 10,),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Text('2020-21 All rights reserved',
+                style: TextStyle(
+                    fontSize: 20
+                ),),
+            ),
+            SizedBox(height: 10,),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Text('Product By HSPM Solutions',
+                style: TextStyle(
+                    fontSize: 10,
+                  fontWeight: FontWeight.bold
+                ),),
+            )
           ],
         ),
       ),
